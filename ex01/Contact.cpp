@@ -15,7 +15,7 @@ Contact::Contact() {}
 // // _Darkest_secret(darkest_secret)
 // {}
 
-
+//setters
 void Contact::setName(const std::string& name)
 {
     _name = name;
@@ -40,6 +40,7 @@ void Contact::setDarkestSecret(const std::string& darkestSecret)
 {
     _darkest_secret = darkestSecret;
 }
+//getters
 std::string Contact::getname(void) const
 {
     return (this->_name);

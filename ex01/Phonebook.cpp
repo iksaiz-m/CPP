@@ -24,25 +24,35 @@ void PhoneBook::add_contact()
     std::string darkestSecret;
     std::getline(std::cin, darkestSecret);
 
-    if (contact.getname().empty() || contact.getlast_name().empty() || contact.getnickname().empty() || 
-        contact.getphonenumber().empty() || contact.getdarksecret().empty())
+    // if (contact.getname().empty() || contact.getlast_name().empty() || contact.getnickname().empty() || 
+    //     contact.getphonenumber().empty() || contact.getdarksecret().empty())
+    if (name.empty() || lastName.empty() || nickname.empty() || 
+        phoneNumber.empty() || darkestSecret.empty())
     {
         std::cerr << "Some of the parameters are empty\n";
         return ;
     }
+    else
+    {
     contact.setName(name);
     contact.setLastName(lastName);
     contact.setNickname(nickname);
     contact.setPhoneNumber(phoneNumber);
     contact.setDarkestSecret(darkestSecret);
+
+    _contacts[_index] = contact;
+    _index = (_index + 1) % 8;
+
+    std::cout << "Contacto añadido correctamente.\n";
+    }
 };
 
 
 void PhoneBook::search_contact()
 {
+    Contact Contact;
     std::string input;
     int index;
-    // phone.search_contact();
     std::cout << "INSERT ONE USER" << std::endl;
     if (!std::getline(std::cin, input))
         return ;
@@ -51,5 +61,13 @@ void PhoneBook::search_contact()
     {
         std::cerr << "Invalid index input\n";
         // continue;
+    }
+    else
+    {
+        std::cout << index;
+        std::cout << _contacts[index].getname();
+        std::cout <<_contacts[index].getlast_name();
+        std::cout <<_contacts[index].getnickname();
+
     }
 }
