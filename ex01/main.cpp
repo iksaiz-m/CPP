@@ -20,7 +20,7 @@ int main(int ac, char **av)
     std::cout << "WELCOME TO THE PHONEBOOK USE IT WITH ADD, SEARCH or EXIT" << std::endl;
     while (1)
     {
-        std::cout << "Enter your command :";
+        std::cout << "Enter your command: ";
         if (!std::getline(std::cin, command))
             return (1);
         command = toupper(command);
@@ -34,20 +34,7 @@ int main(int ac, char **av)
         else if (command == "EXIT")
             return (std::cout << "GOODBYE\n", 0);
         else if (command == "SEARCH")
-        {
-            // std::string input;
-            // int index;
             phone.search_contact();
-            // std::cout << "INSERT ONE USER" << std::endl;
-            // if (!std::getline(std::cin, input))
-            //     return (1);
-            // std::stringstream ss(input);
-            // if (!(ss >> index))
-            // {
-            //     std::cerr << "Invalid index input\n";
-            //     continue;
-            // }
-        }
     }
     return (0);
 }
