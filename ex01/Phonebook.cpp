@@ -61,12 +61,41 @@ void PhoneBook::add_contact()
     }
 };
 
+std::string adaptstring(std::string string)
+{
+    std::string adaptstring;
+    if (string.size() > 10)
+    {
+        adaptstring = string.substr(0, 10);
+        adaptstring[9] = '.';
+        return adaptstring;
+    }
+    return string;
+}
 
 void PhoneBook::search_contact()
 {
     // Contact Contact;
     std::string input;
+    // std::s
     int index;
+    std::cout << std::setw(10) << std::right << "index" << "|";
+    std::cout << std::setw(10) << std::right << "first name" << "|";
+    std::cout << std::setw(10) << std::right << "last name" << "|";
+    std::cout << std::setw(10) << std::right << "nickname" << "|";
+    for (int i = 0; i < 8; i++)
+    {
+        if (_contacts[i].getname().empty())
+        {
+            std::cout << std::endl;
+            break;
+        }
+        std::cout << std::endl;
+        std::cout << std::setw(10) << std::right << i << "|";
+        std::cout << std::setw(10) << std::right << adaptstring(_contacts[i].getname()) << "|";
+        std::cout << std::setw(10) << std::right << adaptstring(_contacts[i].getlast_name()) << "|";
+        std::cout << std::setw(10) << std::right << adaptstring(_contacts[i].getnickname()) << "|";
+    }
     std::cout << "INSERT ONE USER: ";
     if (!std::getline(std::cin, input))
         return ;
