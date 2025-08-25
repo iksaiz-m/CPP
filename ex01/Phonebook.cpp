@@ -4,12 +4,49 @@ int isvalid(std::string string)
 {
     for (size_t i = 0; i < string.size(); i++)
 	{
-		if (string[i] == ' ' || string[i] == '	' || !isascii(string[i]))
+		if (string[i] == ' ' || string[i] == '	' || !isalpha(string[i]))
 		{
 			std::cerr << "One printable word only\n";
 			return	0;
 		}
 	}
+    return (1);
+}
+
+int isvalid2(std::string string, int flag)
+{
+    int word;
+
+    word = 0;
+    if (flag == 0)
+    {
+        for (size_t i = 0; i < string.size(); i++)
+	    {
+		    if (string[i] == ' ' || string[i] == '	' || !isdigit(string[i]))
+		    {
+			    std::cerr << "Only one number allowed\n";
+			    return	0;
+		    }
+	    }
+    }
+    else if (flag == 1)
+    {
+        for (size_t i = 0; i < string.size(); i++)
+	    {
+            if (!isalpha(string[0]))
+            {
+                std::cerr << "It should start with printable letters\n";
+                return (0);
+            }
+		    if (isprint(string[i]))
+                word++;
+	    }
+        if (word == 0)
+        {
+            std::cerr << "Something printable must be written\n";
+            return (0);
+        }
+    }
     return (1);
 }
 void PhoneBook::add_contact() 
@@ -34,12 +71,13 @@ void PhoneBook::add_contact()
     std::cout << "Please put your phone number:" << std::endl;
     std::string phoneNumber;
     std::getline(std::cin, phoneNumber);
-	if (!isvalid(nickname))
+	if (!isvalid2(phoneNumber, 0))
 		return ;
     std::cout << "Please put your darkest secret:" << std::endl;
     std::string darkestSecret;
     std::getline(std::cin, darkestSecret);
-
+    if (!isvalid2(darkestSecret, 1))
+        return ;
     if (name.empty() || lastName.empty() || nickname.empty() || 
         phoneNumber.empty() || darkestSecret.empty())
     {
@@ -87,7 +125,7 @@ void PhoneBook::search_contact()
     {
         if (_contacts[i].getname().empty())
         {
-            std::cout << std::endl;
+            // std::cout << std::endl;
             break;
         }
         std::cout << std::endl;
@@ -96,6 +134,7 @@ void PhoneBook::search_contact()
         std::cout << std::setw(10) << std::right << adaptstring(_contacts[i].getlast_name()) << "|";
         std::cout << std::setw(10) << std::right << adaptstring(_contacts[i].getnickname()) << "|";
     }
+    std::cout << std::endl;
     std::cout << "INSERT ONE USER: ";
     if (!std::getline(std::cin, input))
         return ;
