@@ -1,0 +1,109 @@
+#include "Harl.hpp"
+
+Harl::Harl(){}
+
+Harl::~Harl() {}
+
+void Harl::debug(void)
+{
+    std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special- ketchup burger. I really do!" << std::endl;
+}
+
+void Harl::info(void)
+{
+    std::cout <<  "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
+}
+
+void Harl::warning(void)
+{
+    std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years, whereas you started working here just last month." << std::endl;
+}
+
+void Harl::error(void)
+{
+    std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+}
+
+void Harl::complain(std::string level)
+{
+    const std::string levels[] = {"debug", "info", "warning", "error"};
+
+    void (Harl::*functions[])() = 
+    {
+        &Harl::debug,
+        &Harl::info,
+        &Harl::warning,
+        &Harl::error
+    };
+    int i = 0;
+    while (i < 4)
+    {
+        if (level == levels[i]) // compares string with the levels in array
+        {
+            break;
+        }
+            // (this->*functions[i])();
+            // switch (i)
+            // {
+            //     case 1:
+            //     // this->debug();
+            //     // this->info();
+            //     // this->warning();
+            //     // this->error();
+            //     this->*functions[i]();
+            //     break;
+            //     case 2:
+            //     this->info();
+            //     this->warning();
+            //     this->error();
+            //     break;
+            //     case 3:
+            //     this->warning();
+            //     this->error();
+            //     break;
+            //     case 4:
+            //     this->error();
+            //     break;
+            // }
+            // return (this->*functions[i])();
+            // return (this->*functions[i])(); // we can return the void functions here because complain returns void too
+        // }
+        i++;
+    }
+    switch (i)
+        {
+        case 0:
+            (this->*functions[0])();
+            (this->*functions[1])();
+            (this->*functions[2])();
+            (this->*functions[3])();
+            break;
+        case 1:
+            (this->*functions[1])();
+            (this->*functions[2])();
+            (this->*functions[3])();
+            break;
+        case 2:
+            (this->*functions[2])();
+            (this->*functions[3])();
+            break;
+        case 3:
+            (this->*functions[3])();
+            break;
+        default:
+            std::cout << "Invalid level: " << level << std::endl;
+            break;
+        }
+    // std::cout << "Invalid level: " << level << std::endl;
+
+    
+    // switch (i)
+    // {
+    // case 1:
+    //     /* code */
+    //     break;
+    
+    // default:
+    //     break;
+    // }
+}
