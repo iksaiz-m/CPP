@@ -1,13 +1,10 @@
 #include "Harl.hpp"
 
-int main()
+int main(int ac, char **av)
 {
 Harl Harl;
-
-Harl.complain("debug");
-// Harl.complain("error");
-// Harl.complain("info");
-// Harl.complain("cada");
-// Harl.complain("warning");
+if (ac != 2)
+    return (std::cout << "Error: use 2 arguments" << std::endl, 1);
+Harl.complain(av[1]);
 return (0);
 }
