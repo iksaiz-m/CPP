@@ -36,11 +36,15 @@ void ClapTrap::attack(const std::string& target)
         // target.takeDamage(_attackdamage);
         _energypoints--;
         std::cout << "ClapTrap " << _name << " attacks " << target << " , causing " << _attackdamage << " points of damage!" << std::endl;
+        std::cout << "ClapTraps energypoints left " << _energypoints << std::endl;
     }
+    else
+        std::cout << "no energy to perform actions" << std::endl;
 }
 void ClapTrap::takeDamage(unsigned int amount)
 {
     _hitpoints = _hitpoints - amount;
+    std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
@@ -48,5 +52,9 @@ void ClapTrap::beRepaired(unsigned int amount)
     {
         _hitpoints = _hitpoints + amount;
         _energypoints--;
+        std::cout << "ClapTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
+        std::cout << "ClapTraps energypoints left " << _energypoints << std::endl;
     }
+    else
+        std::cout << "no energy to perform actions" << std::endl;
 }
