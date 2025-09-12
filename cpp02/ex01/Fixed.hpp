@@ -20,8 +20,7 @@ class Fixed  // The class
         Fixed(const Fixed &other); //copy constructor
 
         Fixed &operator=(const Fixed &other); //copy assignment operator
-
-        
+    
         ~Fixed(); // destrcutor
 
         int getRawBits(void) const;
@@ -29,4 +28,7 @@ class Fixed  // The class
         float toFloat(void) const;
         int toInt(void) const;
 };
+
+std::ostream &operator<<(std::ostream &os, const Fixed& fixed);
+
 #endif

@@ -9,23 +9,25 @@ Fixed::Fixed()
 Fixed::Fixed(int number)
 {
     std::cout << "Int constructor called" << std::endl;
-    _fixed = number;
+     _fixed = number << _fractional_bits;
 }
 
 Fixed::Fixed(const float fnumber)
 {
     std::cout << "Float constructor called" << std::endl;
-    _fixed = roundf(fnumber);
+    _fixed = roundf(fnumber * (1 << _fractional_bits));
 }
 
 float Fixed::toFloat(void) const
 {
-    return ((float)_fixed);
+    // return ((float)_fixed); // with this numbers are astronomically high
+    return ((_fixed) / (1 << _fractional_bits)); // divide the number by 256 to get the real float
 }
 
 int Fixed::toInt(void) const
 {
-    return ((int)_fixed);
+    // return ((int)_fixed); // with this numbers are astronomically high
+    return (_fixed >> _fractional_bits); //move the number 8 bits to the right again to get the real number
 }
 
 
@@ -46,6 +48,7 @@ Fixed &Fixed::operator=(const Fixed &other)
     return (*this);
 }
 
+
 Fixed::~Fixed() 
 {
     std::cout << "Destructor called" << std::endl;
@@ -60,4 +63,10 @@ int Fixed::getRawBits(void) const
 void Fixed::setRawBits(int const raw)
 {
     _fixed = raw;
+}
+
+std::ostream &operator<<(std::ostream &os, const Fixed& fixed)
+{
+    os << fixed.toFloat();
+    return os;
 }
