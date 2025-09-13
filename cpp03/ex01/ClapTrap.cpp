@@ -9,6 +9,12 @@ ClapTrap::ClapTrap(std::string name)
     _attackdamage = 0;
 }
 
+// ClapTrap::ClapTrap(std::string name)
+// {
+//         std::cout << "Default constructor called" << std::endl;
+//     _name = name;
+// }
+
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
     std::cout << "Copy constructor called" << std::endl;
@@ -29,39 +35,6 @@ ClapTrap::~ClapTrap()
     std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
-// void ClapTrap::attack(const std::string& target)
-// {
-//     if (_energypoints > 0 && _hitpoints > 0)
-//     {
-//         // target.takeDamage(_attackdamage);
-//         _energypoints--;
-//         std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackdamage << " points of damage!" << std::endl;
-//         std::cout << "ClapTraps energypoints left " << _energypoints << std::endl;
-//     }
-//     else
-//         std::cout << "no energy to perform actions" << std::endl;
-// }
-
-// void ClapTrap::takeDamage(unsigned int amount)
-// {
-//     _hitpoints = _hitpoints - amount;
-//     std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
-// }
-
-// void ClapTrap::beRepaired(unsigned int amount)
-// {
-//     if (_energypoints > 0 && _hitpoints > 0)
-//     {
-//         _hitpoints = _hitpoints + amount;
-//         _energypoints--;
-//         std::cout << "ClapTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
-//         std::cout << "ClapTraps energypoints left " << _energypoints << std::endl;
-//     }
-//     else
-//         std::cout << "no energy to perform actions" << std::endl;
-// }
-
-
 void ClapTrap::attack(const std::string& target)
 {
     if (_energypoints > 0 && _hitpoints > 0)
@@ -74,6 +47,20 @@ void ClapTrap::attack(const std::string& target)
     else
         std::cout << _name << " has no energy or hp to perform actions" << std::endl;
 }
+// void ClapTrap::takeDamage(unsigned int amount)
+// {
+//     if (_hitpoints > 0)
+//     {
+//         std::cout << (_hitpoints - amount) << std::endl;
+//         _hitpoints = _hitpoints - amount;
+//         std::cout << "ClapTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
+//     }
+//     else
+//     {
+//         std::cout << "ClapTrap " << _name << " cant take more damage" << std::endl;
+//         _hitpoints = 0;
+//     }
+// }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
