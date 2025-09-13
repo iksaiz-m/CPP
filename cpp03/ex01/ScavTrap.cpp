@@ -58,11 +58,22 @@ void ScavTrap::takeDamage(unsigned int amount)
 
 void ScavTrap::beRepaired(unsigned int amount)
 {
+    int noinstadeath;
+
+    noinstadeath = _hitpoints + amount;
     if (_energypoints > 0 && _hitpoints > 0)
     {
-        _hitpoints = _hitpoints + amount;
-        _energypoints--;
-        std::cout << "ScavTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
+        if (noinstadeath > 0)
+        {
+            _hitpoints = noinstadeath;
+            std::cout << "ScavTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
+        }
+        else
+        {
+            std::cout << "ScavTrap " << _name << " repaired until it couldnt repair anymore" << std::endl;
+            _hitpoints = 2147483647;
+        }
+            _energypoints--;
         std::cout << "ScavTraps energypoints left " << _energypoints << std::endl;
     }
     else

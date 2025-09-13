@@ -95,13 +95,37 @@ void ClapTrap::takeDamage(unsigned int amount)
     }
 }
 
+// void ClapTrap::beRepaired(unsigned int amount)
+// {
+//     if (_energypoints > 0 && _hitpoints > 0)
+//     {
+//         _hitpoints = _hitpoints + amount;
+//         _energypoints--;
+//         std::cout << "ClapTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
+//         std::cout << "ClapTraps energypoints left " << _energypoints << std::endl;
+//     }
+//     else
+//         std::cout << _name << " has no energy or hp to perform actions" << std::endl;
+// }
+
 void ClapTrap::beRepaired(unsigned int amount)
 {
+    int noinstadeath;
+
+    noinstadeath = _hitpoints + amount;
     if (_energypoints > 0 && _hitpoints > 0)
     {
-        _hitpoints = _hitpoints + amount;
+        if (noinstadeath > 0)
+        {
+            _hitpoints = noinstadeath;
+            std::cout << "ClapTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
+        }
+        else
+        {
+            std::cout << "ClapTrap " << _name << " repaired until it couldnt repair anymore" << std::endl;
+            _hitpoints = 2147483647;
+        }
         _energypoints--;
-        std::cout << "ClapTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
         std::cout << "ClapTraps energypoints left " << _energypoints << std::endl;
     }
     else

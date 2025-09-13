@@ -10,8 +10,9 @@ int main()
     paletin.attack("Manolo");
     paletin.attack("Manolo");
     paletin.takeDamage(85);
-    paletin.beRepaired(45);
-    paletin.takeDamage(777777775);
+    paletin.beRepaired(2150145135);
+    paletin.takeDamage(2);
+    paletin.beRepaired(1);
     paletin.guardGate();
     // robotin.attack("Manolo");
     // robotin.beRepaired(1);
