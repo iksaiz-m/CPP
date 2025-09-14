@@ -13,7 +13,7 @@
 class DiamondTrap : public ScavTrap, public FragTrap //inherits from both
 {
     private:
-        // std::string _name;
+        std::string _name;
         // int _hitpoints;
         // int _energypoints;
         // int _attackdamage;

@@ -14,12 +14,24 @@ FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
     *this = other;
 }
 
+// FragTrap &FragTrap::operator=(const FragTrap &other)
+// {
+//     if (this != &other)
+//         ClapTrap::operator=(other);
+//     // *this = other;
+//     std::cout << "FragTrap Copy assignment operator called" << std::endl;
+//     return (*this);
+// }
+
 FragTrap &FragTrap::operator=(const FragTrap &other)
 {
     if (this != &other)
-        *this = other;
+    {
+        ClapTrap::operator=(other);  // copiar parte ClapTrap
+        // FragTrap no tiene atributos nuevos, pero si tuvieras, aquí los copias
+    }
     std::cout << "FragTrap Copy assignment operator called" << std::endl;
-    return (*this);
+    return *this;
 }
 
 FragTrap::~FragTrap()

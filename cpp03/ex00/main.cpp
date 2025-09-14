@@ -3,6 +3,8 @@
 int main()
 {
     ClapTrap robotin("Claptrap");
+    ClapTrap a("pepe");
+    a = robotin;
     robotin.attack("Manolo");
     robotin.attack("Manolo");
     robotin.attack("Manolo");

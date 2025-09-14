@@ -18,7 +18,13 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
     if (this != &other)
-        *this = other;
+    {
+        _name = other._name;
+        _hitpoints = other._hitpoints;
+        _energypoints = other._energypoints;
+        _attackdamage = other._attackdamage;
+    }
+        // *this = other; // provoca recursividad y segfault al llamarlo... F
     std::cout << "ClapTrap Copy assignment operator called" << std::endl;
     return (*this);
 }

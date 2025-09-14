@@ -3,7 +3,7 @@
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) // inherit from all classes in order
 {
     std::cout << "Default DiamondTrap constructor called" << std::endl;
-    _name = name; // Giving him a name to make it different from the Claptrap name
+    DiamondTrap::_name = name; // Giving him a name to make it different from the Claptrap name
     _hitpoints = FragTrap::_hitpoints; //inherit hp
     _energypoints = ScavTrap::_energypoints; //inherit ep
     _attackdamage = FragTrap::_attackdamage; //inherit ad
@@ -35,6 +35,6 @@ void DiamondTrap::attack(const std::string& target)
 
 void DiamondTrap::whoAmI()
 {
-    std::cout << "my name is " << _name << " and my ClapTrap name is " << ClapTrap::_name << std::endl;
+    std::cout << "my name is " << DiamondTrap::_name << " and my ClapTrap name is " << ClapTrap::_name << std::endl;
     //diferente name between this and claptrap name//
 }
