@@ -10,10 +10,6 @@
 class ClapTrap  // The class
 {
     protected: 
-        // std::string _name;
-        // int _hitpoints;
-        // int _energypoints;
-        // int _attackdamage;
         std::string _name;
         int _hitpoints;
         int _energypoints;

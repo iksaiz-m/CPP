@@ -11,10 +11,6 @@
 class ScavTrap : public ClapTrap //inherits from claptrap
 {
     private:
-        // std::string _name;
-        // int _hitpoints;
-        // int _energypoints;
-        // int _attackdamage;
         // ClapTrap::ClapTrap; // error inheriting constructors only available with ‘-std=c++11’ or ‘-std=gnu++11’
     public:
         ScavTrap(std::string name);

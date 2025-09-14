@@ -11,27 +11,15 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) // inherit from claptrap c
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
     std::cout << "FragTrap Copy constructor called" << std::endl;
-    *this = other;
+    // *this = other;
 }
-
-// FragTrap &FragTrap::operator=(const FragTrap &other)
-// {
-//     if (this != &other)
-//         ClapTrap::operator=(other);
-//     // *this = other;
-//     std::cout << "FragTrap Copy assignment operator called" << std::endl;
-//     return (*this);
-// }
 
 FragTrap &FragTrap::operator=(const FragTrap &other)
 {
     if (this != &other)
-    {
-        ClapTrap::operator=(other);  // copiar parte ClapTrap
-        // FragTrap no tiene atributos nuevos, pero si tuvieras, aquí los copias
-    }
+        ClapTrap::operator=(other);
     std::cout << "FragTrap Copy assignment operator called" << std::endl;
-    return *this;
+    return (*this);
 }
 
 FragTrap::~FragTrap()
@@ -51,49 +39,49 @@ void FragTrap::attack(const std::string& target)
         std::cout << _name << " has no energy or hp to perform actions" << std::endl;
 }
 
-void FragTrap::takeDamage(unsigned int amount)
-{
-    int norevival;
+// void FragTrap::takeDamage(unsigned int amount)
+// {
+//     int norevival;
 
-    norevival = amount - 2147483647;
-    if (_hitpoints > 0)
-    {
-        if (_hitpoints > norevival)
-            _hitpoints = _hitpoints - amount;
-        else
-            _hitpoints = 0;
-        std::cout << "FragTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
-    }
-    else
-    {
-        std::cout << "FragTrap " << _name << " cant take more damage" << std::endl;
-        _hitpoints = 0;
-    }
-}
+//     norevival = amount - 2147483647;
+//     if (_hitpoints > 0)
+//     {
+//         if (_hitpoints > norevival)
+//             _hitpoints = _hitpoints - amount;
+//         else
+//             _hitpoints = 0;
+//         std::cout << "FragTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
+//     }
+//     else
+//     {
+//         std::cout << "FragTrap " << _name << " cant take more damage" << std::endl;
+//         _hitpoints = 0;
+//     }
+// }
 
-void FragTrap::beRepaired(unsigned int amount)
-{
-    int noinstadeath;
+// void FragTrap::beRepaired(unsigned int amount)
+// {
+//     int noinstadeath;
 
-    noinstadeath = _hitpoints + amount;
-    if (_energypoints > 0 && _hitpoints > 0)
-    {
-        if (noinstadeath > 0)
-        {
-            _hitpoints = noinstadeath;
-            std::cout << "FragTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
-        }
-        else
-        {
-            std::cout << "FragTrap " << _name << " repaired until it couldnt repair anymore" << std::endl;
-            _hitpoints = 2147483647;
-        }
-            _energypoints--;
-        std::cout << "FragTraps energypoints left " << _energypoints << std::endl;
-    }
-    else
-        std::cout << _name << " has no energy or hp to perform actions" << std::endl;
-}
+//     noinstadeath = _hitpoints + amount;
+//     if (_energypoints > 0 && _hitpoints > 0)
+//     {
+//         if (noinstadeath > 0)
+//         {
+//             _hitpoints = noinstadeath;
+//             std::cout << "FragTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
+//         }
+//         else
+//         {
+//             std::cout << "FragTrap " << _name << " repaired until it couldnt repair anymore" << std::endl;
+//             _hitpoints = 2147483647;
+//         }
+//             _energypoints--;
+//         std::cout << "FragTraps energypoints left " << _energypoints << std::endl;
+//     }
+//     else
+//         std::cout << _name << " has no energy or hp to perform actions" << std::endl;
+// }
 
 void FragTrap::highFivesGuys(void)
 {

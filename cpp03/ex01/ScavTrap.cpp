@@ -12,13 +12,13 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) // inherit from claptrap c
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) //base class ‘class ClapTrap’ should be explicitly initialized in the copy constructor otherwise it gives an error
 {
     std::cout << "ScavTrap Copy constructor called" << std::endl;
-    *this = other;
+    // *this = other; // not needed it is made with claptrap(other)
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
     if (this != &other)
-        *this = other;
+        ClapTrap::operator=(other);
     std::cout << "ScavTrap Copy assignment operator called" << std::endl;
     return (*this);
 }

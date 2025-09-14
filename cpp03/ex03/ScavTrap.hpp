@@ -24,7 +24,7 @@ class ScavTrap : virtual public ClapTrap //making it virtual so that it doesnt c
         ~ScavTrap();
         void guardGate();
         void attack(const std::string& target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
+        // void takeDamage(unsigned int amount); // removed so that it doesnt become ambiguous for diamondtrap to use this ones, just inherit from claptrap
+        // void beRepaired(unsigned int amount);
 };
 #endif

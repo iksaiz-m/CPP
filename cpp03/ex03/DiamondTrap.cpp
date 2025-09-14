@@ -9,16 +9,19 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
     _attackdamage = FragTrap::_attackdamage; //inherit ad
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other) //inherits from all classes in order
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other) //inherits from all classes in order put in .hpp
 {
     std::cout << "DiamondTrap Copy constructor called" << std::endl;
-    *this = other;
+    _name = other._name;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
 {
     if (this != &other)
-        *this = other;
+    {
+        ClapTrap::operator=(other);
+        _name = other._name;
+    }
     std::cout << "DiamondTrap Copy assignment operator called" << std::endl;
     return (*this);
 }

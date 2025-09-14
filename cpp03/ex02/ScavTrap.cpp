@@ -11,13 +11,13 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) // inherit from claptrap c
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = other;
+    // *this = other;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
     if (this != &other)
-        *this = other;
+        ClapTrap::operator=(other);
     std::cout << "Copy assignment operator called" << std::endl;
     return (*this);
 }

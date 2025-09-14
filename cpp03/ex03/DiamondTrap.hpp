@@ -10,10 +10,10 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap //inherits from both
+class DiamondTrap : public ScavTrap, public FragTrap //inherits from both (put in constructors in this same order to work)
 {
     private:
-        std::string _name;
+        std::string _name; //has its own name
         // int _hitpoints;
         // int _energypoints;
         // int _attackdamage;

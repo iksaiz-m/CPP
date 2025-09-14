@@ -11,13 +11,13 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) // inherit from claptrap c
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
     std::cout << "ScavTrap Copy constructor called" << std::endl;
-    *this = other;
+    // *this = other;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
     if (this != &other)
-        *this = other;
+        ClapTrap::operator=(other);
     std::cout << "ScavTrap Copy assignment operator called" << std::endl;
     return (*this);
 }
@@ -47,46 +47,46 @@ void ScavTrap::attack(const std::string& target)
         std::cout << _name << " has no energy or hp to perform actions" << std::endl;
 }
 
-void ScavTrap::takeDamage(unsigned int amount)
-{
-    int norevival;
+// void ScavTrap::takeDamage(unsigned int amount)
+// {
+//     int norevival;
 
-    norevival = amount - 2147483647;
-    if (_hitpoints > 0)
-    {
-        if (_hitpoints > norevival)
-            _hitpoints = _hitpoints - amount;
-        else
-            _hitpoints = 0;
-        std::cout << "ScavTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
-    }
-    else
-    {
-        std::cout << "ScavTrap " << _name << " cant take more damage" << std::endl;
-        _hitpoints = 0;
-    }
-}
+//     norevival = amount - 2147483647;
+//     if (_hitpoints > 0)
+//     {
+//         if (_hitpoints > norevival)
+//             _hitpoints = _hitpoints - amount;
+//         else
+//             _hitpoints = 0;
+//         std::cout << "ScavTrap " << _name << " takes " << amount << " points of damage!" << std::endl;
+//     }
+//     else
+//     {
+//         std::cout << "ScavTrap " << _name << " cant take more damage" << std::endl;
+//         _hitpoints = 0;
+//     }
+// }
 
-void ScavTrap::beRepaired(unsigned int amount)
-{
-    int noinstadeath;
+// void ScavTrap::beRepaired(unsigned int amount)
+// {
+//     int noinstadeath;
 
-    noinstadeath = _hitpoints + amount;
-    if (_energypoints > 0 && _hitpoints > 0)
-    {
-        if (noinstadeath > 0)
-        {
-            _hitpoints = noinstadeath;
-            std::cout << "ScavTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
-        }
-        else
-        {
-            std::cout << "ScavTrap " << _name << " repaired until it couldnt repair anymore" << std::endl;
-            _hitpoints = 2147483647;
-        }
-            _energypoints--;
-        std::cout << "ScavTraps energypoints left " << _energypoints << std::endl;
-    }
-    else
-        std::cout << _name << " has no energy or hp to perform actions" << std::endl;
-}
+//     noinstadeath = _hitpoints + amount;
+//     if (_energypoints > 0 && _hitpoints > 0)
+//     {
+//         if (noinstadeath > 0)
+//         {
+//             _hitpoints = noinstadeath;
+//             std::cout << "ScavTrap " << _name << " repairs " << amount << " points of damage!" << std::endl;
+//         }
+//         else
+//         {
+//             std::cout << "ScavTrap " << _name << " repaired until it couldnt repair anymore" << std::endl;
+//             _hitpoints = 2147483647;
+//         }
+//             _energypoints--;
+//         std::cout << "ScavTraps energypoints left " << _energypoints << std::endl;
+//     }
+//     else
+//         std::cout << _name << " has no energy or hp to perform actions" << std::endl;
+// }

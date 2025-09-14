@@ -11,13 +11,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) // inherit from claptrap c
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
     std::cout << "FragTrap Copy constructor called" << std::endl;
-    *this = other;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other)
 {
     if (this != &other)
-        *this = other;
+        ClapTrap::operator=(other);
     std::cout << "FragTrap Copy assignment operator called" << std::endl;
     return (*this);
 }

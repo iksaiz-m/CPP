@@ -5,9 +5,10 @@ int main()
 {
     // ClapTrap robotin("Claptrap");
     ScavTrap paletin("maonolo");
-    paletin.attack("Manolo");
-    paletin.attack("Manolo");
-    paletin.attack("Manolo");
+    ScavTrap x(paletin);
+    x.attack("Manolo");
+    x.attack("Manolo");
+    x.attack("Manolo");
     paletin.attack("Manolo");
     paletin.takeDamage(85);
     paletin.beRepaired(2150145135);
