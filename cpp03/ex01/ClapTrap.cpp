@@ -9,15 +9,9 @@ ClapTrap::ClapTrap(std::string name)
     _attackdamage = 0;
 }
 
-// ClapTrap::ClapTrap(std::string name)
-// {
-//         std::cout << "Default constructor called" << std::endl;
-//     _name = name;
-// }
-
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "ClapTrap Copy constructor called" << std::endl;
     *this = other;
 }
 
@@ -25,11 +19,10 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
     if (this != &other)
         *this = other;
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "ClapTrap Copy assignment operator called" << std::endl;
     return (*this);
 }
 
-        
 ClapTrap::~ClapTrap()
 {
     std::cout << "ClapTrap Destructor called" << std::endl;

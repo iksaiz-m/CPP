@@ -9,7 +9,11 @@
 
 class ClapTrap  // The class
 {
-    protected: // protected makes it private but accesible for inherited classes this way Scavtrap doesnt need new variables
+    protected: 
+        // std::string _name;
+        // int _hitpoints;
+        // int _energypoints;
+        // int _attackdamage;
         std::string _name;
         int _hitpoints;
         int _energypoints;
@@ -22,7 +26,7 @@ class ClapTrap  // The class
         ClapTrap &operator=(const ClapTrap &other); //copy assignment operator
 
         
-        ~ClapTrap(); // destrcutor
+        virtual ~ClapTrap(); // destrcutor
 
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);

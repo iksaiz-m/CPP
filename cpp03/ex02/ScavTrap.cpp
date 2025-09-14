@@ -3,15 +3,14 @@
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) // inherit from claptrap class
 {
     std::cout << "Default ScavTrap constructor called" << std::endl;
-    // _name = name;
     _hitpoints = 100;
     _energypoints = 50;
     _attackdamage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) //base class ‘class ClapTrap’ should be explicitly initialized in the copy constructor otherwise it gives an error
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
-    std::cout << "ScavTrap Copy constructor called" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
     *this = other;
 }
 
@@ -19,7 +18,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
     if (this != &other)
         *this = other;
-    std::cout << "ScavTrap Copy assignment operator called" << std::endl;
+    std::cout << "Copy assignment operator called" << std::endl;
     return (*this);
 }
 
@@ -40,7 +39,6 @@ void ScavTrap::attack(const std::string& target)
 {
     if (_energypoints > 0 && _hitpoints > 0)
     {
-        // target.takeDamage(_attackdamage);
         _energypoints--;
         std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _attackdamage << " points of damage!" << std::endl;
         std::cout << "ScavTrap energypoints left " << _energypoints << std::endl;

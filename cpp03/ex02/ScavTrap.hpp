@@ -8,7 +8,7 @@
 #include <iomanip>
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap //inherits from claptrap
+class ScavTrap : public ClapTrap 
 {
     private:
         // std::string _name;

@@ -8,7 +8,8 @@
 #include <iomanip>
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap //inherits from claptrap
+
+class ScavTrap : virtual public ClapTrap //making it virtual so that it doesnt create another claptrap when creating a diamontrap
 {
     private:
         // std::string _name;
