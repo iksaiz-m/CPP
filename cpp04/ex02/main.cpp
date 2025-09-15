@@ -5,7 +5,7 @@
 int main()
 {
 
-    // const AAnimal *animalito = new AAnimal(); // cant because is abstract
+    const AAnimal *animalito = new AAnimal(); // cant because is abstract
     const AAnimal *gabriel = new Dog();
     gabriel->makeSound();
     delete (gabriel);
