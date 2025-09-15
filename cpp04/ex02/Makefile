@@ -1,9 +1,9 @@
 CXX			 = c++
 CXXFLAGS       = -Wall -Wextra -Werror -g3 -std=c++98
 
-NAME         = ClapTrap
+NAME         = Animal
 RM           = rm -f
-SRC =	main.cpp  ClapTrap.cpp
+SRC =	main.cpp  Animal.cpp Dog.cpp Cat.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
