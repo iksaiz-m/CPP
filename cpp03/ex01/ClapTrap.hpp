@@ -22,7 +22,7 @@ class ClapTrap  // The class
         ClapTrap &operator=(const ClapTrap &other); //copy assignment operator
 
         
-        ~ClapTrap(); // destrcutor
+        virtual ~ClapTrap(); // virtual destructor to ensure proper destruction of inherited classes with pointers
 
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);

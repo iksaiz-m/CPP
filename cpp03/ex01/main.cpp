@@ -25,3 +25,11 @@ int main()
     // robotin.beRepaired(1);
 
 }
+
+// int main()
+// {
+//   ScavTrap *d = new ScavTrap("manolo");  
+//   ClapTrap *b = d;
+//   delete b; // without virtual destructor it will only destroy claptrap
+//   return 0;
+// }
