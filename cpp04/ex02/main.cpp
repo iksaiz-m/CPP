@@ -1,25 +1,29 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
 int main()
 {
-const Animal* meta = new Animal();
-const Animal* j = new Dog();
-const Animal* i = new Cat();
-// const Animal* x(i); // will not call copy constructor as it a pointer not an object, only one delete
 
-delete (i);
-i = j; // to make a copy we need to delete de malloc first to avoid leaks after
+    // const AAnimal *animalito = new AAnimal(); // cant because is abstract
+    const AAnimal *gabriel = new Dog();
+    gabriel->makeSound();
+    delete (gabriel);
+    // const Animal *animalito = new Cat[n];
 
-std::cout << j->getType() << " " << std::endl;
-std::cout << i->getType() << " " << std::endl;
-i->makeSound(); //will output the cat sound!
-j->makeSound();
-// x->makeSound();
-// x->getType();
-meta->makeSound();
-delete (j);
-delete(meta);
-// delete(x); // it can be x or i because it is a pointer
+    // while (i < n)
+    // {
+    //     if (i % 2)
+    //         animalito[i] = new Dog();
+    //     else
+    //         animalito[i] = new Cat();
+    //     i++;
+    // }
+    // i = 0;
+    // while(i < n)
+    // {
+    //     delete animalito[i];
+    //     i++;
+    // }
+    // delete [] animalito; // cant be done compiler cries a lot
 }

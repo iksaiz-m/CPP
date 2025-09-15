@@ -1,15 +1,16 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
     std::cout << "Default Cat constructor called" << std::endl;
     _type = "Cat";
+    Brain = new class Brain();
+
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other) : AAnimal(other)
 {
     std::cout << "Cat Copy constructor called" << std::endl;
-    // _type = other._type;
 }
 
 Cat &Cat::operator=(const Cat &other)
@@ -25,6 +26,7 @@ Cat &Cat::operator=(const Cat &other)
 Cat::~Cat()
 {
     std::cout << "Cat Destructor called" << std::endl;
+    delete (Brain);
 }
 
 void Cat::makeSound() const

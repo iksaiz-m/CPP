@@ -6,12 +6,14 @@
 #include <string.h>
 #include <sstream>
 #include <iomanip>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : public AAnimal
 {
     private: 
         std::string _type;
+        Brain*  Brain;
     public:             
         Dog(); //default constructor
         Dog(const Dog &other); //copy constructor
