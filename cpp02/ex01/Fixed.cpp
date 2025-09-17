@@ -9,13 +9,13 @@ Fixed::Fixed()
 Fixed::Fixed(int number)
 {
     std::cout << "Int constructor called" << std::endl;
-     _fixed = number << _fractional_bits;
+     _fixed = number << _fractional_bits; // move _fractional_bits times to the left in this case is like doing * 2^8
 }
 
 Fixed::Fixed(const float fnumber)
 {
     std::cout << "Float constructor called" << std::endl;
-    _fixed = roundf(fnumber * (1 << _fractional_bits));
+    _fixed = roundf(fnumber * (1 << _fractional_bits)); // doing the same multiplying by 2^8 but cant do it moving bits because is a float
 }
 
 float Fixed::toFloat(void) const
