@@ -14,7 +14,6 @@ class Weapon  // The class
     public:             // Access specifier
         Weapon(std::string type);
         ~Weapon();
-        void announce( void );
         void setType(const std::string& type);
         std::string getType() const;
 };
