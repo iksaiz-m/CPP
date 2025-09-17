@@ -21,7 +21,7 @@ Fixed::Fixed(const float fnumber)
 float Fixed::toFloat(void) const
 {
     // return ((float)_fixed); // with this numbers are astronomically high
-    return ((_fixed) / (1 << _fractional_bits)); // divide the number by 256 to get the real float
+    return (static_cast<float>(_fixed) / (1 << _fractional_bits)); // // divide the number by 256 to get the real float also static cast better
 }
 
 int Fixed::toInt(void) const
@@ -93,54 +93,54 @@ bool Fixed::operator!=(const Fixed &other) const
 // {
 
 // }
-Fixed &Fixed::operator+(const Fixed &other)
+Fixed Fixed::operator+(const Fixed &other)
 {
-    _fixed = _fixed + other._fixed;
-    return (*this);
+    // _fixed = _fixed + other._fixed;
+    // return (*this);
+    Fixed result;
+    result.setRawBits(this->_fixed + other._fixed); // dont need to use fractional bits because both are multiplied by 256
+    return result;
 }
 
-Fixed &Fixed::operator-(const Fixed &other)
+Fixed Fixed::operator-(const Fixed &other)
 {
-    _fixed = _fixed - other._fixed;
-    return (*this);
+    // _fixed = _fixed - other._fixed;
+    // return (*this);
+    Fixed result;
+    result.setRawBits(this->_fixed - other._fixed);
+    return result;
 }
 
-Fixed &Fixed::operator*(const Fixed &other)
+Fixed Fixed::operator*(const Fixed &other)
 {
-    _fixed = _fixed * other._fixed;
-    return (*this);
+    // _fixed = _fixed * other._fixed;
+    // return (*this);
+    Fixed result;
+    result.setRawBits((this->_fixed * other._fixed) >> _fractional_bits); // we need to use it as multiplying makes it 256 times bigger than it should
+    return result;
 }
 
-Fixed &Fixed::operator/(const Fixed &other)
+Fixed Fixed::operator/(const Fixed &other)
 {
-    _fixed = _fixed / other._fixed;
-    return (*this);
+    // _fixed = _fixed / other._fixed;
+    // return (*this);
+    Fixed result;
+    result.setRawBits((this->_fixed << _fractional_bits) / other._fixed);
+    return result;
 }
 
 Fixed &Fixed::operator++()
 {
-    _fixed += (1 << _fractional_bits); // add before returning
+    _fixed += 1; // add before returning
     return (*this);
 }
 
 Fixed Fixed::operator++(int)
 {
     Fixed tmp(*this);
-    _fixed += (1 << _fractional_bits); // added but returning previous value
+    _fixed += 1; // added but returning previous value
     return (tmp);
 }
-
-// Fixed &Fixed::operator+(const Fixed &other)
-// {
-//     if (this != &other)
-//     {
-//         _fixed = other._fixed;
-//     }
-//     std::cout << "Copy assignment operator called" << std::endl;
-//     return (*this);
-// }
-
-
 
 Fixed &Fixed::max(Fixed &f1, Fixed &f2)
 {

@@ -41,10 +41,10 @@ class Fixed  // The class
         //arithmetic operators 
         //not const because we change the value
         // Fixed &operator+(const Fixed &f1, const Fixed &f2); // not like this compiler cries
-        Fixed &operator+(const Fixed &other);
-        Fixed &operator-(const Fixed &other);
-        Fixed &operator*(const Fixed &other);
-        Fixed &operator/(const Fixed &other);
+        Fixed operator+(const Fixed &other);
+        Fixed operator-(const Fixed &other);
+        Fixed operator*(const Fixed &other);
+        Fixed operator/(const Fixed &other);
 
         // //increment/decrement operators
         Fixed &operator++(); //preincrement without an int

@@ -21,7 +21,7 @@ Fixed::Fixed(const float fnumber)
 float Fixed::toFloat(void) const
 {
     // return ((float)_fixed); // with this numbers are astronomically high
-    return ((_fixed) / (1 << _fractional_bits)); // divide the number by 256 to get the real float
+    return (static_cast<float>(_fixed) / (1 << _fractional_bits)); // // divide the number by 256 to get the real float also static cast better
 }
 
 int Fixed::toInt(void) const
@@ -30,13 +30,11 @@ int Fixed::toInt(void) const
     return (_fixed >> _fractional_bits); //move the number 8 bits to the right again to get the real number
 }
 
-
 Fixed::Fixed(const Fixed &other)
 {
     std::cout << "Copy constructor called" << std::endl;
     _fixed = other._fixed;
 }
-
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
@@ -47,7 +45,6 @@ Fixed &Fixed::operator=(const Fixed &other)
     std::cout << "Copy assignment operator called" << std::endl;
     return (*this);
 }
-
 
 Fixed::~Fixed() 
 {
