@@ -21,13 +21,15 @@ class Bureaucrat
         
         ~Bureaucrat(); // destrcutor
         
-        void makeSound() const;
-        std::string getType() const;
         void GradeTooHighException();
         void GradeTooLowException();
-        std::string getName(void) const;
-        void setName(const std::string& name);
+        void promotion();
+        void demotion();
+        const std::string &getName(void) const;
+        // void setName(std::string& name); // cant use this as it is a const name
         int getGrade() const;
 
 };
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat& name);
 #endif

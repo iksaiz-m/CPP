@@ -1,7 +1,7 @@
 CXX			 = c++
 CXXFLAGS       = -Wall -Wextra -Werror -g3 -std=c++98
 
-NAME         = Animal
+NAME         = Politics
 RM           = rm -f
 SRC =	main.cpp  Bureaucrat.cpp
 
