@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) //constructed 
     // try
     // {
     if (grade < 1)
-        throw(Bureaucrat::GradeTooHighException());
+        throw(GradeTooHighException());
     // }
     // catch(int gradeerror)
     // {
@@ -29,7 +29,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) //constructed 
     // try
     // {
     if (grade > 150)
-        throw(Bureaucrat::GradeTooLowException());
+        throw(Bureaucrat::GradeTooLowException()); //Class must be inside the bureaucrat for it to be able to call it
     this->_grade = grade;
     // }
     // }
@@ -123,6 +123,14 @@ Bureaucrat::~Bureaucrat()
 //     std::cout << getName() << " Grade is too low" << std::endl;
 //     // Bureaucrat::~Bureaucrat();
 // }
+// void Bureaucrat::signForm(const Form &form) // cant be called like a const form because it modifies signed value
+// {
+//     form.beSigned(this);
+// }
+void Bureaucrat::signForm(Form &form)
+{
+    form.beSigned(*this);
+}
 
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat& name)

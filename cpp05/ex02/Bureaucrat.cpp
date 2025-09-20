@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) //constructed 
     // try
     // {
     if (grade < 1)
-        throw(Bureaucrat::GradeTooHighException());
+        throw(GradeTooHighException());
     // }
     // catch(int gradeerror)
     // {
@@ -29,7 +29,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) //constructed 
     // try
     // {
     if (grade > 150)
-        throw(Bureaucrat::GradeTooLowException());
+        throw(GradeTooLowException());
     this->_grade = grade;
     // }
     // }

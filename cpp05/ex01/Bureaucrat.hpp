@@ -7,6 +7,7 @@
 #include <sstream>
 #include <iomanip>
 #include <exception>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -29,6 +30,7 @@ class Bureaucrat
         const std::string &getName(void) const;
         // void setName(std::string& name); // cant use this as it is a const name
         int getGrade() const;
+        void signForm(Form &form);
         class GradeTooHighException : public std::exception // exception class without orthodox canonical form
         {
             public:
@@ -43,7 +45,6 @@ class Bureaucrat
             // private:
             // std::string message_;
         };
-        
         class GradeTooLowException : public std::exception // exception class without orthodox canonical form
         {
             public:
@@ -59,6 +60,7 @@ class Bureaucrat
             // std::string message_;
         };
 };
+
 
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat& name);
