@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-// Bureaucrat::Bureaucrat(std::string name, int grade)
+/*// Bureaucrat::Bureaucrat(std::string name, int grade)
 // {
     // if (grade < 1)
     //     Bureaucrat::GradeTooHighException();
@@ -9,26 +9,28 @@
     //     GradeTooLowException();
 //     else
 //         // setName(name);
-//     Bureaucrat::_name = name;
+//     Bureaucrat::_name = name; // cant set the name it is a constant
 // }
+*/
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
-    : _name(name), _grade(grade) //constructed the bureaucrat with the name and grade
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) //constructed the bureaucrat with the name and grade
 {
     // try
     // {
     if (grade < 1)
-        throw(Bureaucrat::GradeTooHighException);
+        throw(GradeTooHighException());
     // }
     // catch(int gradeerror)
     // {
-    //     Bureaucrat::GradeTooHighException(); //removing catch from here to avoid creating the object even if it is invalid
+    //     Bureaucrat::GradeTooHighException(); //removing catch from here to avoid creating the object if it is invalid
     //     // std::cerr << e.what() << '\n';
     // }
     // try
     // {
     if (grade > 150)
-        throw(Bureaucrat::GradeTooLowException());
+        throw(GradeTooLowException());
+    this->_grade = grade;
     // }
     // }
     // catch(int gradeerror2)
@@ -37,16 +39,18 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
     // }
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other)
+Bureaucrat::Bureaucrat(const Bureaucrat& other) // copy constructor
     : _name(other._name), _grade(other._grade)
-{}
+{
+        std::cout << "Bureaucrat Copy constructor called" << std::endl;
+}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
     if (this != &other)
     {
-        // _name = other._name; // cant do this because it is a const variable it cant change
-        _grade = other._grade; 
+        //_name = other._name; // cant do this because it is a const variable it cant change
+        this->_grade = other._grade; 
     }
     std::cout << "Bureaucrat Copy assignment operator called" << std::endl;
     return *this;
@@ -55,18 +59,18 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 
 void Bureaucrat::promotion(void)
 {
-    try
-    {
+    // try
+    // {
         if (Bureaucrat::getGrade() > 1)
             Bureaucrat::_grade -=1;
     
         // if (Bureaucrat::getGrade() < 1)
-        if (Bureaucrat::getGrade() == 1)
-            throw(Bureaucrat::GradeTooHighException);
+        // if (Bureaucrat::getGrade() == 1)
+        //     throw(Bureaucrat::GradeTooHighException);
         else
-            throw(Bureaucrat::GradeTooHighException());
+            throw(GradeTooHighException());
             // throw(Bureaucrat::getGrade());
-    }
+    // }
     // catch(int gradeerror)
     // {
     //     Bureaucrat::GradeTooHighException();
@@ -76,16 +80,16 @@ void Bureaucrat::promotion(void)
 
 void Bureaucrat::demotion()
 {
-    try
-    {
+    // try
+    // {
         if (Bureaucrat::getGrade() < 150)
             Bureaucrat::_grade +=1;
         // Bureaucrat::_grade +=1;
         // if (Bureaucrat::getGrade() > 150)
         else
-        throw(Bureaucrat::GradeTooLowException());
+            throw(GradeTooLowException());
             // throw(Bureaucrat::getGrade());
-    }
+    // }
     // catch(int gradeerror2)
     // {
     //     Bureaucrat::GradeTooLowException();
@@ -102,25 +106,23 @@ int Bureaucrat::getGrade(void) const
     return (this->_grade);
 }
 
-
-
 Bureaucrat::~Bureaucrat()
 {
     std::cout << "Bureaucrat " << getName() << " has been eliminated" << std::endl;
 }
 
-void Bureaucrat::GradeTooHighException()
-{
-    std::cout << getName() << " Grade is too high" << std::endl;
-    // Bureaucrat::~Bureaucrat();
+// void Bureaucrat::GradeTooHighException() // removed functions as they aare classes instead
+// {
+//     std::cout << getName() << " Grade is too high" << std::endl;
+//     // Bureaucrat::~Bureaucrat();
 
-}
+// }
 
-void Bureaucrat::GradeTooLowException()
-{
-    std::cout << getName() << " Grade is too low" << std::endl;
-    // Bureaucrat::~Bureaucrat();
-}
+// void Bureaucrat::GradeTooLowException()
+// {
+//     std::cout << getName() << " Grade is too low" << std::endl;
+//     // Bureaucrat::~Bureaucrat();
+// }
 
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat& name)
