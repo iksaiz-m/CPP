@@ -7,6 +7,7 @@
 #include <sstream>
 #include <iomanip>
 #include <exception>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -29,37 +30,38 @@ class Bureaucrat
         const std::string &getName(void) const;
         // void setName(std::string& name); // cant use this as it is a const name
         int getGrade() const;
-};
-
-class GradeTooHighException : public std::exception // exception class without orthodox canonical form
-{
-    public:
-    //     void what();
-        const char *what() const throw()
+        void signForm(Form &form);
+        class GradeTooHighException : public std::exception // exception class without orthodox canonical form
         {
-            return ("Grade is too high");
-        }
-    // GradeTooHighException(const std::string& message) : message_(message) {}
-    // const char* what() const throw() { return message_.c_str(); }
-
-    // private:
-    // std::string message_;
-};
-
-class GradeTooLowException : public std::exception // exception class without orthodox canonical form
-{
-    public:
-        const char *what() const throw()
+            public:
+            //     void what();
+                const char *what() const throw()
+                {
+                    return ("Grade is too high");
+                }
+            // GradeTooHighException(const std::string& message) : message_(message) {}
+            // const char* what() const throw() { return message_.c_str(); }
+        
+            // private:
+            // std::string message_;
+        };
+        class GradeTooLowException : public std::exception // exception class without orthodox canonical form
         {
-            return ("Grade is too low");
-        }
-    //     void what();
-    // GradeTooLowException(const std::string& message) : message_(message) {}
-    // const char* what() const throw() { return message_.c_str(); }
-    
-    // private:
-    // std::string message_;
+            public:
+                const char *what() const throw()
+                {
+                    return ("Grade is too low");
+                }
+            //     void what();
+            // GradeTooLowException(const std::string& message) : message_(message) {}
+            // const char* what() const throw() { return message_.c_str(); }
+            
+            // private:
+            // std::string message_;
+        };
 };
+
+
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat& name);
 
