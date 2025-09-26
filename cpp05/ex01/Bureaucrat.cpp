@@ -135,6 +135,6 @@ void Bureaucrat::signForm(Form &form)
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat& name)
 {
-    os << name.getName() << " grade " << name.getGrade();
+    os << name.getName() << ", bureaucrat grade " << name.getGrade();
     return os;
 }
