@@ -3,10 +3,10 @@
 Fixed::Fixed() 
 {
     std::cout << "Default constructor called" << std::endl;
-    _fixed = 0;
+    _fixed = 0 << _fractional_bits;
 }
 
-Fixed::Fixed(int number)
+Fixed::Fixed(const int number)
 {
     std::cout << "Int constructor called" << std::endl;
      _fixed = number << _fractional_bits; // move _fractional_bits times to the left in this case is like doing * 2^8

@@ -6,7 +6,7 @@ Fixed::Fixed()
     _fixed = 0 << _fractional_bits;
 }
 
-Fixed::Fixed(int number)
+Fixed::Fixed(const int number)
 {
     std::cout << "Int constructor called" << std::endl;
      _fixed = number << _fractional_bits;

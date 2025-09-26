@@ -3,7 +3,7 @@
 Fixed::Fixed() 
 {
     std::cout << "Default constructor called" << std::endl;
-    _fixed = 0;
+    _fixed = 0 << _fractional_bits;
 }
 
 Fixed::Fixed(const Fixed &other)

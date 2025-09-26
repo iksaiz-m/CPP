@@ -15,7 +15,7 @@ class Fixed  // The class
         static const int _fractional_bits = 8;
     public:             
         Fixed(); //default constructor
-        Fixed(int number); //constructor with int parameter
+        Fixed(const int number); //constructor with int parameter
         Fixed(const float fnumber); //constructor with float parameter 
         Fixed(const Fixed &other); //copy constructor
 
