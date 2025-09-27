@@ -1,8 +1,17 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name) // inherit from claptrap class
+FragTrap::FragTrap() : ClapTrap()
 {
     std::cout << "Default FragTrap constructor called" << std::endl;
+    _name = "Default";
+    _hitpoints = 10;
+    _energypoints = 10;
+    _attackdamage = 0;
+}
+
+FragTrap::FragTrap(std::string name) : ClapTrap(name) // inherit from claptrap class
+{
+    std::cout << "FragTrap constructor called" << std::endl;
     _hitpoints = 100;
     _energypoints = 100;
     _attackdamage = 30;

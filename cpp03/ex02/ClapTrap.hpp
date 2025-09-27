@@ -16,10 +16,11 @@ class ClapTrap  // The class
         int _attackdamage;
     public:             
         // ClapTrap(std::string name, int hpoints, int energy, int ad); //default constructor
-        ClapTrap(std::string name); //default constructor
-        ClapTrap(const ClapTrap &other); //copy constructor
+        ClapTrap();
+        ClapTrap(std::string name); 
+        ClapTrap(const ClapTrap &other);
 
-        ClapTrap &operator=(const ClapTrap &other); //copy assignment operator
+        ClapTrap &operator=(const ClapTrap &other);
 
         
         virtual ~ClapTrap(); // virtual destructor

@@ -1,5 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main() 
 {
@@ -7,10 +10,11 @@ int main()
     {
         Bureaucrat pepe("pepe", 2);
         std::cout << pepe << std::endl;
-        Form deleted("delete", 6, 2);
-        std::cout << deleted << std::endl;
-        pepe.signForm(deleted);
-        std::cout << deleted << std::endl;
+        // AForm deleted("delete", 6, 2);
+        PresidentialPardonForm lame("Paco");
+        std::cout << lame << std::endl;
+        pepe.signForm(lame);
+        std::cout << lame << std::endl;
         // pepe.promotion();
         // std::cout << pepe << std::endl;
     }

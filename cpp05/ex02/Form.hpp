@@ -29,6 +29,7 @@ class AForm
         int getSGrade(void) const;
         int getEGrade(void) const;
         virtual bool issigned(void) const = 0;
+        void execute(Bureaucrat const & executor);
         class GradeTooHighException : public std::exception // exception class without orthodox canonical AForm
         {
             public:

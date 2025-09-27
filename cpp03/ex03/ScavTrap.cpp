@@ -1,8 +1,17 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) // inherit from claptrap class
+ScavTrap::ScavTrap() : ClapTrap()
 {
     std::cout << "Default ScavTrap constructor called" << std::endl;
+    _name = "Default";
+    _hitpoints = 10;
+    _energypoints = 10;
+    _attackdamage = 0;
+}
+
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name) // inherit from claptrap class
+{
+    std::cout << "ScavTrap constructor called" << std::endl;
     _hitpoints = 100;
     _energypoints = 50;
     _attackdamage = 20;

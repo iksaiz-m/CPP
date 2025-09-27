@@ -17,6 +17,7 @@ class ScavTrap : public ClapTrap
         // int _attackdamage;
         // ClapTrap::ClapTrap; // error inheriting constructors only available with ‘-std=c++11’ or ‘-std=gnu++11’
     public:
+        ScavTrap();
         ScavTrap(std::string name);
         ScavTrap(const ScavTrap &other);
         ScavTrap &operator=(const ScavTrap &other);

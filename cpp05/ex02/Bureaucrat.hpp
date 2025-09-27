@@ -30,7 +30,7 @@ class Bureaucrat
         const std::string &getName(void) const;
         // void setName(std::string& name); // cant use this as it is a const name
         int getGrade() const;
-        void signForm(Form &form);
+        void signForm(AForm &form);
         class GradeTooHighException : public std::exception // exception class without orthodox canonical form
         {
             public:

@@ -15,21 +15,23 @@ class Bureaucrat; //here instead of the library because if not the functions are
 class PresidentialPardonForm: public AForm
 {
     private: 
-        const std::string _name;
-        bool _signed;
-        const int _sign_grade;
-        const int _exec_grade;
+        // const std::string _name;
+        // bool _signed;
+        // int _sign_grade;
+        // int _exec_grade;
+        const std::string &_target;
     public:             
-        AForm(const std::string name, int signgrade, int execgrade); //default constructor
-        AForm(const AForm &other); //copy constructor
+        // PresidentialPardonForm(const std::string name, int signgrade, int execgrade); 
+        PresidentialPardonForm(const std::string &target);
+        PresidentialPardonForm(const PresidentialPardonForm &other); //copy constructor
 
-        AForm &operator=(const AForm &other); //copy assignment operator
-        ~AForm(); // destrcutor
+        PresidentialPardonForm &operator=(const PresidentialPardonForm &other); //copy assignment operator
+        ~PresidentialPardonForm(); // destrcutor
         void beSigned(const Bureaucrat &other);
         const std::string &getName(void) const;
         int getSGrade(void) const;
         int getEGrade(void) const;
-        virtual bool issigned(void) const = 0;
+        bool issigned(void) const;
         class GradeTooHighException : public std::exception // exception class without orthodox canonical AForm
         {
             public:
@@ -48,6 +50,6 @@ class PresidentialPardonForm: public AForm
                 }
         };
 };
-std::ostream& operator<<(std::ostream& os, const AForm& AForm);
+std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& AForm);
 
 #endif

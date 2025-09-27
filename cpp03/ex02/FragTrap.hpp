@@ -17,6 +17,7 @@ class FragTrap : public ClapTrap
         // int _attackdamage;
         // ClapTrap::ClapTrap; // error inheriting constructors only available with ‘-std=c++11’ or ‘-std=gnu++11’
     public:
+        FragTrap();
         FragTrap(std::string name);
         FragTrap(const FragTrap &other);
         FragTrap &operator=(const FragTrap &other);

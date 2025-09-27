@@ -16,7 +16,8 @@ class ClapTrap  // The class
         int _attackdamage;
     public:             
         // ClapTrap(std::string name, int hpoints, int energy, int ad); //default constructor
-        ClapTrap(std::string name); //default constructor
+        ClapTrap(); //default constructor
+        ClapTrap(std::string name); //constructor with parameters
         ClapTrap(const ClapTrap &other); //copy constructor
 
         ClapTrap &operator=(const ClapTrap &other); //copy assignment operator
