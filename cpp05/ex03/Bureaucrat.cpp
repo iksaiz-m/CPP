@@ -13,6 +13,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) //constructed 
     if (grade > 150)
         throw(Bureaucrat::GradeTooLowException());
     this->_grade = grade;
+    std::cout << "Bureaucrat constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) // copy constructor

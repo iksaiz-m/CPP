@@ -40,16 +40,16 @@ AForm* Intern::makeForm(std::string form_name, const std::string &target_name)
     switch (i)
         {
         case 0:
-            newform = new PresidentialPardonForm(target_name);
             std::cout << "Intern creates " << form_name << std::endl;
+            newform = new PresidentialPardonForm(target_name);
             break;
         case 1:
-            newform = new RobotomyRequestForm(target_name);
             std::cout << "Intern creates " << form_name << std::endl;
+            newform = new RobotomyRequestForm(target_name);
             break;
         case 2:
-            newform = new ShrubberyCreationForm(target_name);
             std::cout << "Intern creates " << form_name << std::endl;
+            newform = new ShrubberyCreationForm(target_name);
             break;
         default:
             std::cout << "Intern couldnt create: " << form_name << std::endl;
