@@ -16,38 +16,12 @@ class Bureaucrat; //here instead of the library because if not the functions are
 class RobotomyRequestForm: public AForm
 {
     private: 
-        const std::string &_target;
-        // bool _signed;
-        // const int _sign_grade;
-        // const int _exec_grade;
     public:             
         RobotomyRequestForm(const std::string &target); //default constructor
         RobotomyRequestForm(const RobotomyRequestForm &other); //copy constructor
-
         RobotomyRequestForm &operator=(const RobotomyRequestForm &other); //copy assignment operator
         ~RobotomyRequestForm(); // destrcutor
-        void beSigned(const Bureaucrat &other);
-        const std::string &getName(void) const;
-        int getSGrade(void) const;
-        int getEGrade(void) const;
-        bool issigned(void) const;
-        class GradeTooHighException : public std::exception // exception class without orthodox canonical AForm
-        {
-            public:
-            //     void what();
-                const char *what() const throw()
-                {
-                    return ("Grade is too high");
-                }
-        };
-        class GradeTooLowException : public std::exception // exception class without orthodox canonical AForm
-        {
-            public:
-                const char *what() const throw()
-                {
-                    return ("Grade is too low");
-                }
-        };
+        void executeAction() const; // this one as it is virtual in AForm needs its own take depending on the Form
 };
 std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& AForm);
 

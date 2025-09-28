@@ -1,6 +1,12 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp" // the library here instead of in the hpp to use the functions
 
+Form::Form() : _name("Default"), _sign_grade(150), _exec_grade(149)
+{
+    std::cout << "Form Default constructor called" << std::endl;
+    this->_signed = false;
+}
+
 Form::Form(const std::string name, int signgrade, int execgrade) // default constructor
     : _name(name), _sign_grade(signgrade), _exec_grade(execgrade)
 {
@@ -8,7 +14,7 @@ Form::Form(const std::string name, int signgrade, int execgrade) // default cons
         throw(Form::GradeTooHighException());
     if (signgrade > 150 || execgrade > 150)
         throw(Form::GradeTooLowException());
-    std::cout << "Form Default constructor called" << std::endl;
+    std::cout << "Form constructor called" << std::endl;
     this->_signed = false;
 }
 
@@ -54,15 +60,36 @@ bool Form::issigned(void) const
     return (this->_signed);
 }
 
+// void  Form::beSigned(const Bureaucrat &other)
+// {
+//     if(other.getGrade() <= this->getSGrade())
+//     {
+//         std::cout << other.getName() << " signed " << this->getName() << std::endl;
+//         this->_signed = true;
+//     }
+//     else
+//         std::cout << other.getName() << " couldn't sign " << this->getName() << " because the grade is too low" << std::endl;
+// }
+
 void  Form::beSigned(const Bureaucrat &other)
 {
-    if(other.getGrade() <= this->getSGrade())
-    {
-        std::cout << other.getName() << " signed " << this->getName() << std::endl;
+    // if(other.getGrade() <= this->getSGrade())
+    // {
+    //     if (this->_signed == false)
+    //     {
+    //         std::cout << other.getName() << " signed " << this->getName() << std::endl;
+    //         this->_signed = true;
+    //     }
+    //     else
+    //         std::cout << other.getName() << " couldn't sign " << this->getName() << " because it is already signed" << std::endl;
+    // }
+    // else
+    //     std::cout << other.getName() << " couldn't sign " << this->getName() << " because the grade is too low" << std::endl;
+
+    if (other.getGrade() <= this->getSGrade())
         this->_signed = true;
-    }
     else
-        std::cout << other.getName() << " couldn't sign " << this->getName() << " because the grade is too low" << std::endl;
+        throw Form::GradeTooLowException(); // throwing the exception instead of writting it
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& form) {

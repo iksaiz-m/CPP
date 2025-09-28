@@ -1,14 +1,14 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp" // the library here instead of in the hpp to use the functions
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) :AForm::AForm("ShrubberyCreationForm", 145, 137), _target(target) // default constructor
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) :AForm::AForm("ShrubberyCreationForm", 145, 137, target)//, _target(target) // default constructor
 {
     std::cout << " ShrubberyCreationForm Default constructor called" << std::endl;
     // _target = target;
     // this->_signed = false;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target)// copy constructor
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other)//, _target(other._target)// copy constructor
 {
         std::cout << "ShrubberyCreationForm Copy constructor called" << std::endl;
 }
@@ -27,43 +27,28 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
         AForm::operator=(other);
     }
     std::cout << "ShrubberyCreationForm Copy assignment operator called" << std::endl;
-    return *this;
+    return (*this);
 }
 
-const std::string &ShrubberyCreationForm::getName(void) const
+void ShrubberyCreationForm::executeAction() const
 {
-    // return (this->_name);
-    return(AForm::getName());
-}
-
-int ShrubberyCreationForm::getSGrade(void) const
-{
-    // return (this->_sign_grade);
-    return(AForm::getSGrade());
-}
-
-int ShrubberyCreationForm::getEGrade(void) const
-{
-    // return (this->_exec_grade);
-    return(AForm::getEGrade());
-}
-
-bool ShrubberyCreationForm::issigned(void) const
-{
-    // return (this->_signed);
-    return(AForm::issigned());
-}
-
-void  ShrubberyCreationForm::beSigned(const Bureaucrat &other)
-{
-    AForm::beSigned(other);
-    // if(other.getGrade() <= this->getSGrade())
-    // {
-    //     std::cout << other.getName() << " signed " << this->getName() << std::endl;
-    //     this->_signed = true;
-    // }
-    // else
-    //     std::cout << other.getName() << " couldn't sign " << this->getName() << " because the grade is too low" << std::endl;
+    std::string tree = this->getTarget();
+    std::ofstream filetree(tree.append("_shrubbery").c_str()); // creates new file with the apropiate name
+    if (!filetree.is_open())
+    {
+         std::cout << "Error: couldn't create output file" << std::endl; // if it cant create it then return an error
+        return ;
+    }
+    filetree << "       _-_\n";
+    filetree << "    /~~   ~~\\\n";
+    filetree << " /~~         ~~\\\n";
+    filetree << "{               }\n";
+    filetree << " \\  _-     -_  /\n";
+    filetree << "   ~  \\\\ //  ~\n";
+    filetree << "_- -   | | _- _\n";
+    filetree << "  _ -  | |   -_\n";
+    filetree << "      // \\\\\n";
+    filetree.close();                  // closes the file after writting a beautiful tree in it
 }
 
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& ShrubberyCreationForm) {

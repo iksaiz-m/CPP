@@ -19,6 +19,7 @@ class Form
         const int _sign_grade;
         const int _exec_grade;
     public:             
+        Form();
         Form(const std::string name, int signgrade, int execgrade); //default constructor
         Form(const Form &other); //copy constructor
 

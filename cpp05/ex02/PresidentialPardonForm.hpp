@@ -15,40 +15,45 @@ class Bureaucrat; //here instead of the library because if not the functions are
 class PresidentialPardonForm: public AForm
 {
     private: 
-        // const std::string _name;
-        // bool _signed;
-        // int _sign_grade;
-        // int _exec_grade;
-        const std::string &_target;
     public:             
-        // PresidentialPardonForm(const std::string name, int signgrade, int execgrade); 
+        // PresidentialPardonForm(const std::string name, int signgrade, int execgrade); // doesnt need this constructor, only target is required
         PresidentialPardonForm(const std::string &target);
         PresidentialPardonForm(const PresidentialPardonForm &other); //copy constructor
 
         PresidentialPardonForm &operator=(const PresidentialPardonForm &other); //copy assignment operator
         ~PresidentialPardonForm(); // destrcutor
-        void beSigned(const Bureaucrat &other);
-        const std::string &getName(void) const;
-        int getSGrade(void) const;
-        int getEGrade(void) const;
-        bool issigned(void) const;
-        class GradeTooHighException : public std::exception // exception class without orthodox canonical AForm
-        {
-            public:
-            //     void what();
-                const char *what() const throw()
-                {
-                    return ("Grade is too high");
-                }
-        };
-        class GradeTooLowException : public std::exception // exception class without orthodox canonical AForm
-        {
-            public:
-                const char *what() const throw()
-                {
-                    return ("Grade is too low");
-                }
-        };
+
+
+        //all this functions are from AForm
+
+        // const std::string &getName(void) const;
+        // int getSGrade(void) const;
+        // int getEGrade(void) const;
+        // const std::string &getTarget(void) const;
+        // bool issigned(void) const;
+        // void beSigned(const Bureaucrat &other);
+        // void execute(Bureaucrat const & executor) const;
+
+        void executeAction() const; // this one as it is virtual in AForm needs its own take depending on the Form
+
+        //this ones also from AForm
+        // class GradeTooHighException : public std::exception // exception class without orthodox canonical AForm
+        // {
+        //     public:
+        //     //     void what();
+        //         const char *what() const throw()
+        //         {
+        //             return ("Grade is too high");
+        //         }
+        // };
+        // class GradeTooLowException : public std::exception // exception class without orthodox canonical AForm
+        // {
+        //     public:
+        //         const char *what() const throw()
+        //         {
+        //             return ("Grade is too low");
+        //         }
+        // };
 };
 std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& AForm);
 

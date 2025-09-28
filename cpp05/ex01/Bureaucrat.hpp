@@ -15,7 +15,8 @@ class Bureaucrat
         const std::string _name;
         int _grade;
     public:             
-        Bureaucrat(const std::string name, int grade); //default constructor
+        Bureaucrat(); //default constructor
+        Bureaucrat(const std::string name, int grade);
         Bureaucrat(const Bureaucrat &other); //copy constructor
 
         Bureaucrat &operator=(const Bureaucrat &other); //copy assignment operator

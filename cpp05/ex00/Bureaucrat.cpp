@@ -12,7 +12,11 @@
 //     Bureaucrat::_name = name; // cant set the name it is a constant
 // }
 */
-
+Bureaucrat::Bureaucrat() : _name("Default")
+{
+    std::cout << "Bureaucrat Default constructor called" << std::endl;
+    this->_grade = 150;
+}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) //constructed the bureaucrat with the name and grade
 {
@@ -53,7 +57,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
         this->_grade = other._grade; 
     }
     std::cout << "Bureaucrat Copy assignment operator called" << std::endl;
-    return *this;
+    return (*this);
 }
 
 
