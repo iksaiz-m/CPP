@@ -9,7 +9,7 @@
 
 class ClapTrap  // The class
 {
-    protected: // protected makes it private but accesible for inherited classes this way Scavtrap doesnt need new variables
+    protected: // protected makes it private but accesible for inherited classes this way Scavtrap doesnt need new variables and have access to them
         std::string _name;
         int _hitpoints;
         int _energypoints;
