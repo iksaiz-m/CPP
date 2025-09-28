@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap()
 {
-        std::cout << "Default ClapTrap constructor called" << std::endl;
+    std::cout << "Default ClapTrap constructor called" << std::endl;
     _name = "Default";
     _hitpoints = 10;
     _energypoints = 10;
@@ -11,7 +11,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
-        std::cout << "ClapTrap constructor called" << std::endl;
+    std::cout << "ClapTrap constructor called" << std::endl;
     _name = name;
     _hitpoints = 10;
     _energypoints = 10;

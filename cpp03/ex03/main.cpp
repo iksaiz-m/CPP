@@ -6,8 +6,10 @@
 int main()
 {
     // ClapTrap robotin("Claptrap");
-    DiamondTrap paletin("maonolo");
-    DiamondTrap jaime(paletin);
+    // DiamondTrap paletin("maonolo");
+    // DiamondTrap jaime(paletin);
+    DiamondTrap x;
+    x.whoAmI();
     // DiamondTrap juan;
     // DiamondTrap f1("Pepe");
     // FragTrap f2("Juan");
@@ -27,5 +29,5 @@ int main()
     // // paletin.beRepaired(10);
     // paletin.attack("Manolo");
     // jaime.highFivesGuys();
-    jaime.whoAmI();
+    // jaime.whoAmI();
 }
