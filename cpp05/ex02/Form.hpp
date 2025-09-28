@@ -28,7 +28,7 @@ class AForm
         AForm(const AForm &other); //copy constructor
 
         AForm &operator=(const AForm &other); //copy assignment operator
-        ~AForm(); // destrcutor
+        virtual ~AForm(); // destrcutor
         void beSigned(const Bureaucrat &other);
         const std::string &getName(void) const;
         int getSGrade(void) const;
