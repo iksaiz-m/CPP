@@ -7,7 +7,8 @@ Intern::Intern()
 
 // Intern::Intern(const Intern& other)
 // {
-//     std::cout << "Intern Copy constructor called" << std::endl; // doesnt have anything to copy but ok
+//     other
+//         std::cout << "Intern Copy constructor called" << std::endl; // doesnt have anything to copy but ok
 // }
 
 Intern& Intern::operator=(const Intern& other) // doesnt do anything either
@@ -28,7 +29,7 @@ Intern::~Intern()
 AForm* Intern::makeForm(std::string form_name, const std::string &target_name)
 {
     const std::string levels[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-    AForm *newform;
+    AForm *newform = NULL; // asigned to null to avoid sending a pointer with something strange if creating fails
     int i = 0;
     while (i < 3)
     {
@@ -54,6 +55,5 @@ AForm* Intern::makeForm(std::string form_name, const std::string &target_name)
             std::cout << "Intern couldnt create: " << form_name << std::endl;
             break;
         }
-    
     return (newform);
 }

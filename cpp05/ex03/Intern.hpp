@@ -19,7 +19,7 @@ class Intern //: public PresidentialPardonForm, public RobotomyRequestForm, publ
     public:             
         Intern(); //default constructor
         // Intern(const std::string name, int grade); cant be made has not atributes
-        // Intern(const Intern &other); //copy constructor but does nothing 
+        // Intern(const Intern &other); //copy constructor but does nothing compiler cries with other being unused
 
         Intern &operator=(const Intern &other); //copy assignment operator but does nothing
 

@@ -11,10 +11,12 @@ int main()
 Bureaucrat juan("juan", 1);
 Intern someRandomIntern;
 AForm* rrf;
-rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
-std::cout << *rrf << std::endl;
-juan.signForm(*rrf);
-juan.executeForm(*rrf);
-delete (rrf);
-
+rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+if (rrf != NULL)
+{
+    std::cout << *rrf << std::endl;
+    juan.signForm(*rrf);
+    juan.executeForm(*rrf);
+    delete (rrf);
+}
 }
