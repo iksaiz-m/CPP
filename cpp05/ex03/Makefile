@@ -3,7 +3,7 @@ CXXFLAGS       = -Wall -Wextra -Werror -g3 -std=c++98
 
 NAME         = Politics
 RM           = rm -f
-SRC =	main.cpp  Bureaucrat.cpp
+SRC =	main.cpp  Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp Intern.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
