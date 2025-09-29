@@ -8,8 +8,10 @@ Intern::Intern()
 // Intern::Intern(const Intern& other)
 // {
 //     other
-//         std::cout << "Intern Copy constructor called" << std::endl; // doesnt have anything to copy but ok
+//         std::cout << "Intern Copy constructor called" << std::endl; // doesnt have anything to copy but ok, compiler cries
 // }
+
+Intern::Intern(const Intern &other) {*this = other;}
 
 Intern& Intern::operator=(const Intern& other) // doesnt do anything either
 {
