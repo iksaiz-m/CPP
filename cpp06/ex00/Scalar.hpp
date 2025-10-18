@@ -3,8 +3,8 @@
 
 // #include <cctype>
 // #include <string.h>
-// #include <sstream>
-// #include <iomanip>
+#include <sstream>
+#include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
@@ -19,8 +19,4 @@ class ScalarConverter
     public:
         static void convert(std::string literal);
 };
-
-
-
-
 #endif
