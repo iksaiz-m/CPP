@@ -3,12 +3,12 @@
 
 // #include <cctype>
 // #include <string.h>
-#include <stdint.h>
 #include <sstream>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <stdint.h> //  needed to read uintptr_t
 
 typedef struct Data
 {
