@@ -1,9 +1,9 @@
 CXX			 = c++
 CXXFLAGS       = -Wall -Wextra -Werror -g3 -std=c++98
 
-NAME         = Scaling
+NAME         = Iter
 RM           = rm -f
-SRC =	main.cpp Scalar.cpp
+SRC =	main.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
