@@ -36,7 +36,7 @@ Array<T>::Array(unsigned int n) : elements(NULL), _size(n)
 {
 
     if (n > 0)
-        this->elements = new T[n];
+        this->elements = new T[n](); // initialised for every type posible
     std::cout << "An array of size " << n << " has been created" << std::endl;
 }
 
