@@ -15,8 +15,8 @@ int main()
         intarray[1] = 17;
         // size_t len = meme.size();
         size_t len2 = xd.size();
-        // std::cout << "tamaño meme: " <<len << std::endl;
-        std::cout << "tamaño xd: " << len2 << std::endl;
+        // std::cout << "len meme: " <<len << std::endl;
+        std::cout << "len xd: " << len2 << std::endl;
         // std::cout << "xd[0]: " << xd[0] << std::endl;
         // std::cout << "intarray[0]: " << intarray[0] << std::endl;
         // std::cout << "intarray[1]: " << intarray[1] << std::endl;

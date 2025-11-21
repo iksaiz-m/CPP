@@ -1,12 +1,10 @@
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
-
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
 
 #include <sstream>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
-
 template <typename T>
 class Array
 {
@@ -64,7 +62,7 @@ Array<T>&Array<T>::operator=(const Array<T> &other)
 {
     if (this != &other)
     {
-        // if (this->elements) // Checks if there i   s memory allocated already
+        // if (this->elements) // Checks if there is memory allocated already
         // turns out it doesnt matter if the pointer is null
         delete[] this->elements; // To allocate new memory first we delete the pointer with delete[] 
         this->elements = new T[other.size()];

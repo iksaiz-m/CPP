@@ -1,12 +1,10 @@
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
-
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
 
 #include <sstream>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
-
 template <typename T>
 class Array
 {
@@ -64,7 +62,7 @@ Array<T>&Array<T>::operator=(const Array<T> &other)
 {
     if (this != &other)
     {
-        // if (this->elements) // Checks if there i   s memory allocated already
+        // if (this->elements) // Checks if there is memory allocated already
         // turns out it doesnt matter if the pointer is null
         delete[] this->elements; // To allocate new memory first we delete the pointer with delete[] 
         this->elements = new T[other.size()];
@@ -107,6 +105,21 @@ const T& Array<T>::operator[](size_t index) const
     if (index >= _size)
         throw std::out_of_range("Index out of bounds");
     return (this->elements[index]);
+}
+
+
+template <typename T>
+int& easyfind(T& container, int searched_int);
+
+template <typename T>
+int& easyfind(T& container, int searched_int)
+{
+    for (size_t i = 0; i < container.size(); ++i)
+    {
+        if (container[i] == searched_int)
+            return container[i]; // returns the position using the overloaded [] operator of the container
+    }
+    throw std::out_of_range("Searched int is not inside of the container");
 }
 
 #endif
