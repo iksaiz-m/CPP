@@ -1,46 +1,55 @@
-#include "Span.hpp"
+#include "MutantStack.hpp"
 
-int main(void)
+// int main()
+// {
+// MutantStack<int>
+// std::list<int> l = {};
+// mstack;
+// mstack.push(5);
+// mstack.push(17);
+// std::cout << mstack.top() << std::endl;
+// mstack.pop();
+// std::cout << mstack.size() << std::endl;
+// mstack.push(3);
+// mstack.push(5);
+// mstack.push(737);
+// //[...]
+// mstack.push(0);
+// MutantStack<int>::iterator it = mstack.begin();
+// MutantStack<int>::iterator ite = mstack.end();
+// ++it;
+// --it;
+// while (it != ite)
+// {
+// std::cout << *it << std::endl;
+// ++it;
+// }
+// std::stack<int> s(mstack);
+// return 0;
+// }
+
+#include <algorithm>
+#include <iostream>
+#include <list>
+ 
+int main()
 {
-    try
-    {
-        Span sp(5);
-        // sp.addNumber(6);
-        // sp.addNumber(3);
-        // sp.addNumber(17);
-        // sp.addNumber(9);
-        // sp.addNumber(11);
-        // std::cout << sp[0] << std::endl;
-        // std::cout << sp[1] << std::endl;
-        // std::cout << sp.shortestSpan() << std::endl;
-        // std::cout << sp.longestSpan() << std::endl;
-        int x = 0;
-        // size_t len = 10;
-        // std::srand(std::time(0));
-        while(x < 10)
-        {
-            int i = std::rand() % 2;
-            // iter(sp, len, sp.addNumber(i)); // doesnt work because it expects a result from addNumber and returns void, is not a call to the function
-            // iter(sp, 1, &{ sp.addNumber(x)});
-            iter(sp, 1, [&](int value) {sp.addNumber(value);});
-            x++;
-        }
-        // void randomize(int& value)
-        // {
-        //     value = std::rand() % 100;
-        // }
-
-// Uso:
-        // iter(sp, 1, randomize);
-    //     iter(sp, 1, (int& value)
-    //     {
-    // value = std::rand() % 100; // asignar un valor aleatorio
-    //     });
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
-    return (0);
+    // Create a list containing integers
+    std::list<int> l = {7, 5, 16, 8};
+ 
+    // Add an integer to the front of the list
+    l.push_front(25);
+    // Add an integer to the back of the list
+    l.push_back(13);
+ 
+    // Insert an integer before 16 by searching
+    auto it = std::find(l.begin(), l.end(), 16);
+    if (it != l.end())
+        l.insert(it, 42);
+ 
+    // Print out the list
+    std::cout << "l = { ";
+    for (int n : l)
+        std::cout << n << ", ";
+    std::cout << "};\n";
 }

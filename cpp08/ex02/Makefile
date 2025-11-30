@@ -3,7 +3,7 @@ CXXFLAGS       = -Wall -Wextra -Werror -g3 -std=c++98
 
 NAME         = Mutated_Abomination
 RM           = rm -f
-SRC =	main.cpp Span.cpp
+SRC =	main.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
