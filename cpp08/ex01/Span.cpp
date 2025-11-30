@@ -74,7 +74,7 @@ void Span::addNumber(int number_to_add)
 {
     size_t i = 0;
     if (this->_size == 0)
-        throw std::out_of_range("No space available");
+        throw std::runtime_error("No space available");
     while (i < this->_size)
     {
         if (!this->elements[i])
@@ -85,7 +85,7 @@ void Span::addNumber(int number_to_add)
         }
         i++;
     }
-    throw std::out_of_range("No space available");
+    throw std::runtime_error("No space available");
     return;
 }
 

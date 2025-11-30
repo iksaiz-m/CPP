@@ -33,21 +33,10 @@ public:
         for (InputIterator it = begin; it != end; ++it)
         {
             if (_count >= _size)
-                throw std::runtime_error("No hay espacio para añadir más elementos");
+                throw std::runtime_error("No more espace left");
             this->elements[_count] = *it;
             _count++;
         }
     }
 };
-
-// template <typename C, typename F>
-// void iter(C& container, size_t length, F func)
-// {
-//     for (size_t i = 0; i < container.size() && i < length; ++i)
-//         func(container[i]);
-// }
-
-
-
-
 #endif
