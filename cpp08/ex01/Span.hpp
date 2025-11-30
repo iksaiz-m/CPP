@@ -7,12 +7,15 @@
 #include <fstream>
 #include <cctype>
 #include <string.h>
+#include <cstdlib>
+#include <ctime>
 
 class Span
 {
 private:
     int *elements;
     size_t _size; // size of the array
+    size_t _count; // Number of elements already in the array
 public:
     Span(unsigned int N); // creates an array of n elements
     Span(const Span &other);
@@ -24,22 +27,26 @@ public:
     void addNumber(int number_to_add);
     int shortestSpan();
     int longestSpan();
-    
+    template<typename InputIterator>
+    void addRange(InputIterator begin, InputIterator end)
+    {
+        for (InputIterator it = begin; it != end; ++it)
+        {
+            if (_count >= _size)
+                throw std::runtime_error("No hay espacio para añadir más elementos");
+            this->elements[_count] = *it;
+            _count++;
+        }
+    }
 };
 
-// template <typename F> // typename F allows the use of any kind of function even lambdas defined in the same call.
-//     void iter(int* array, size_t length, F func) // version without constant
-//     {
-//     for (size_t i = 0; i < length; ++i)
-//         func(array[i]);
-//     }
+// template <typename C, typename F>
+// void iter(C& container, size_t length, F func)
+// {
+//     for (size_t i = 0; i < container.size() && i < length; ++i)
+//         func(container[i]);
+// }
 
-template <typename C, typename F>
-void iter(C& container, size_t length, F func)
-{
-    for (size_t i = 0; i < container.size() && i < length; ++i)
-        func(container[i]);
-}
 
 
 

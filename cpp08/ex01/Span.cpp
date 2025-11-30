@@ -1,13 +1,13 @@
 #include "Span.hpp"
 
-Span::Span(unsigned int N) : elements(NULL), _size(N)
+Span::Span(unsigned int N) : elements(NULL), _size(N), _count(0)
 {
     if (N > 0)
         this->elements = new int[N](); // initialised for every type posible
     std::cout << "An Span of size " << N << " has been created" << std::endl;
 }
 
-Span::Span(const Span &other) : elements(NULL), _size(0)
+Span::Span(const Span &other) : elements(NULL), _size(0), _count(0)
 {
     size_t len = other.size();
     if (len > 0)
@@ -18,6 +18,7 @@ Span::Span(const Span &other) : elements(NULL), _size(0)
         while (i < len)
         {
             this->elements[i] = other.elements[i];
+            _count++;
             i++;
         }
     }
@@ -32,9 +33,11 @@ Span &Span::operator=(const Span &other)
         this->elements = new int[other.size()];
         this->_size = other.size();
         size_t i = 0;
+        _count = 0;
         while (i < _size)
         {
             this->elements[i] = other.elements[i];
+            _count++;
             i++;
         }
         std::cout << "An Span of size " << _size << " has been created using the assignment operator" << std::endl;
@@ -77,6 +80,7 @@ void Span::addNumber(int number_to_add)
         if (!this->elements[i])
         {
             this->elements[i] = number_to_add;
+            _count++;
             return ;
         }
         i++;
@@ -84,9 +88,6 @@ void Span::addNumber(int number_to_add)
     throw std::out_of_range("No space available");
     return;
 }
-
-
-
 
 int Span::longestSpan()
 {
@@ -130,10 +131,11 @@ int Span::shortestSpan()
             if (result == 0)
                 result = x;
             else
-            result = x > result ? result : x;
+                result = x > result ? result : x;
             t++;
         }
         i++;
         t = i + 1;
     }
     return (result);
+}
