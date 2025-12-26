@@ -1,16 +1,6 @@
 #include "BitcoinExchange.hpp"
 
-int textvalues(std::string line, std::string s1, std::string s2)
-{
-    size_t pos = 0;
-    while ((pos = line.find(s1, pos)) != std::string::npos)
-    {
-        line.erase(pos, s1.length());
-        line.insert(pos, s2);
-        pos = pos + s2.length();
-    }
-    return (0);
-}
+
 
 int parsefile(std::ifstream &file)
 {
@@ -21,10 +11,6 @@ int parsefile(std::ifstream &file)
         {
             return (std::cerr << "Error: Wrong format in file " << std::endl, 0);
         }
-        // while(std::getline(file, line, ' ') && std::getline(file, pipe, ' ') && std::getline(file, value))
-        // {
-        //     parseline(line, pipe, value);
-        // }
     }
     else
         return (std::cerr << "Error: could not open file " << std::endl, 0);

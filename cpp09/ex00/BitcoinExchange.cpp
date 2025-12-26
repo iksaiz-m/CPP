@@ -1,11 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-// int parsedate(std::string date, std::string value)
-// {
-//     if (atol(value))
-// }
-
-
 BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(std::string file)
@@ -90,7 +84,6 @@ void BitcoinExchange::Getvalue(std::ifstream &file)
             {
                 if (it == _map.end() || it->first != date)
                     --it;
-
                 std::cout << date << " => " << value << " = " << std::atof(value.c_str()) *it->second << std::endl;
             }
         }
