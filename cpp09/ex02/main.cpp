@@ -4,12 +4,18 @@ int main(int ac, char **av)
 {
     if(ac < 2)
         return (std::cerr << "Error: there should be at least be two arguments." << std::endl, 1);
-    int i = 1;
-    PmergeMe sorting();
-    while (av[i])
+    try
     {
-        // sort.push_back(av[i] - '0');
-        sorting::
+        PmergeMe amigo(av);
+        amigo.printlist();
+        amigo.sortlist();
+        amigo.sortvector();
+        amigo.printlist();
     }
-    std::string equation = av[1];
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+   
 }    

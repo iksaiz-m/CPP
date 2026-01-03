@@ -3,7 +3,7 @@ CXXFLAGS       = -Wall -Wextra -Werror -g3 -std=c++98
 
 NAME         = PmergeMe
 RM           = rm -f
-SRC =	main.cpp
+SRC =	main.cpp PmergeMe.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
