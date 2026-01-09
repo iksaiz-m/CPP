@@ -39,21 +39,31 @@ PmergeMe::~PmergeMe(){}
 void PmergeMe::printlist()
 {
     for (std::list<int>::iterator it = _list.begin(); it != _list.end(); ++it)
-{
-    std::cout << *it << " ";
-}
-std::cout << std::endl;
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
 }
 
 
 void PmergeMe::printvector()
 {
     for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); ++it)
-{
-    std::cout << *it << " ";
-}
+    {
+        std::cout << *it << " ";
+    }
 std::cout << std::endl;
 }
+
+// void PmergeMe::printvectorpair(std::vector<std::pair<int, int>> pair)
+// {
+//     for (std::vector<int>::iterator it = pair.begin(); it != pair.end(); ++it)
+//     {
+//         std::cout << *it << " ";
+//     }
+// std::cout << std::endl;
+// }
+
 
 void PmergeMe::sortvector()
 {
@@ -63,39 +73,44 @@ void PmergeMe::sortvector()
     {
         int a = _vector[i];
         int b = _vector[i + 1];
-        if (a < b)
+        if (a > b)
             std::swap(a, b);
         pairs.push_back(std::make_pair(a, b));
     }
     if (_vector.size() % 2 != 0)
         _withoutpair = _vector.back();
-
+    // printvector();
+    for (size_t i = 0; i < pairs.size(); ++i)
+    {
+        std::cout << "Par " << i + 1 << ": (" << pairs[i].first << ", " << pairs[i].second << ")" << std::endl;
+    }
+    std::cout << _withoutpair << std::endl;
 }
 void PmergeMe::sortlist()
 {
     std::list< std::pair<int, int> > pairs;
     _withoutpair = -1;
-    
     std::list<int>::iterator it = _list.begin();
-    
     while (it != _list.end())
     {
         int first = *it;
         ++it;
-    
         if (it == _list.end())
         {
             _withoutpair = first;
             break;
         }
-    
         int second = *it;
         ++it;
-    
-        if (first < second)
+        if (first > second)
             std::swap(first, second);
-    
         pairs.push_back(std::make_pair(first, second));
     }
+    // std::cout << pairs();
+
+        // printlist();
 }
+
+
+
 
