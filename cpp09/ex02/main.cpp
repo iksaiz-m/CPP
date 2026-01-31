@@ -7,9 +7,10 @@ int main(int ac, char **av)
     try
     {
         PmergeMe amigo(av);
+        amigo.printbeforelist();
         // amigo.sortlist();
         amigo.sortvector();
-        amigo.printvector();
+        amigo.afterlist();
 
         // amigo.printvector();
         // amigo.printlist();

@@ -1,5 +1,31 @@
 #include "PmergeMe.hpp"
 
+int	handle_repetition(std::vector<int> _vector)
+{
+    size_t i = 0;
+    size_t limit = _vector.size();
+    size_t t;
+    int n;
+    int n2;
+    while (i + 1 != limit)
+    {
+        t = i + 1;
+        n = _vector[i];
+        n2 = _vector[t];
+        while (t != limit)
+        {
+            n2 = _vector[t];
+            if (n == n2)
+            {
+                return 1;
+            }
+            t++;
+        }
+        i++;
+    }
+    return (0);
+}
+
 PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe(char **av)
@@ -20,6 +46,8 @@ PmergeMe::PmergeMe(char **av)
         _vector.push_back(static_cast<int>(number));
         _list.push_back(static_cast<int>(number));
     }
+    if (handle_repetition(_vector) == 1)
+        throw std::runtime_error("Error: no number repetitions");
 }
 
 PmergeMe::PmergeMe(const PmergeMe &copy) : _vector(copy._vector), _list(copy._list) {}
@@ -36,212 +64,100 @@ PmergeMe & PmergeMe::operator=(const PmergeMe &src)
 
 PmergeMe::~PmergeMe(){}
 
-void PmergeMe::printlist()
+void PmergeMe::printbeforelist()
 {
-    for (std::list<int>::iterator it = _list.begin(); it != _list.end(); ++it)
-    {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-}
-
-void PmergeMe::printvector()
-{
+    std::cout << "Before: ";
     for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); ++it)
     {
         std::cout << *it << " ";
     }
-std::cout << std::endl;
+    std::cout << std:: endl;
+//     Before: 3 5 9 7 4
+// After:
+// 3 4 5 7 9
+// Time to process a range of 5 elements with std::[..] : 0.00031 us
+// Time to process a range of 5 elements with std::[..] : 0.00014 us
+// std::cout << std::endl;
 }
 
-// void sortingvector(std::vector<int> losers, std::vector<int> winner, int withoutpair)
- // for (size_t i = 0; i < winner.size(); ++i)
-    // {
-    //         std::cout << "original winners " << i + 1 << ": (" << winner[i] << ")" << std::endl;
-    // }
-    // std::cout << std::endl;
-    // std::vector<int> winning;
-    // for (size_t i = 0; i + 1 < winner.size(); i += 2)
-    // {
-    //     int a = winner[i];
-    //     int b = winner[i + 1];
-    //     if (a > b)
-    //         std::swap(a, b);
-    //     losers.push_back(a);
-    //     winning.push_back(b);
-    // }
-    // if (winner.size() % 2 != 0)
-    // {
-    //     withoutpair = winner.back();
-    //     winning.push_back(withoutpair);
-    // }
-    // if (winning.size() > 1)
-    //     sortingvector(losers, winning, withoutpair);
-    // else
-    // {
-    //     for (size_t i = 0; i < losers.size(); ++i)
-    //     {
-    //         std::cout << "losers " << i + 1 << ": (" << losers[i] << ")" << std::endl;
-    //     }
-    //     for (size_t i = 0; i < winning.size(); ++i)
-    //     {
-    //         std::cout << "last winner " << i + 1 << ": (" << winning[i] << ")" << std::endl;
-    //     }
-    // }
-
-
-// void sortingvector(std::vector<int>& losers, std::vector<int>& winners)
-void sortingvector(std::vector< std::pair<int,int> >& pairs, std::vector<int>& winners)
+void PmergeMe::afterlist()
 {
-    // std::vector<int> newWinners;
+    std::cout << "After: ";
+    for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std:: endl;
 
-    // for (size_t i = 0; i + 1 < winners.size(); i += 2)
-    // {
-    //     int a = winners[i];
-    //     int b = winners[i + 1];
-    //     if (a > b)
-    //         std::swap(a, b);
-    //     losers.push_back(a);
-    //     newWinners.push_back(b);
-    // }
-    // if (winners.size() % 2 != 0)
-    //     newWinners.push_back(winners.back());
+}
 
-    // winners = newWinners;
-    // if (winners.size() == 1)
-    // {
-    // std::vector<int> result;
-    // result.push_back(winners[0]);
-    // for (size_t i = 0; i < losers.size(); ++i)
-    // {
-    //     std::vector<int>::iterator pos = std::lower_bound(result.begin(), result.end(), losers[i]);
-    //     result.insert(pos, losers[i]);
-    // }
-    // winners = result; // ← aquí está el resultado final
-    // return;
-    // }
-    // sortingvector(losers, winners);
+std::vector<size_t> buildJacobOrder(std::size_t pairsize)
+{
+    std::vector<size_t> jacobstals;
+    jacobstals.push_back(1);
+    jacobstals.push_back(1);
+    while (1)
+    {
+        size_t next = jacobstals[jacobstals.size()-1] + 2 * jacobstals[jacobstals.size()-2];
+        if (next > pairsize)
+            break;
+        jacobstals.push_back(next);
+    }
+    return (jacobstals);
+}
+
+
+void sortingvector(std::vector<int>& winners)
+{
+    //crear vectores del nivel
+    // std::vector<std::pair<int,int> pairsNivel;
+    std::vector< std::pair<int, int> > pairsNivel;
     std::vector<int> newWinners;
-
+    //emparejar
     for (size_t i = 0; i + 1 < winners.size(); i += 2)
     {
         int a = winners[i];
         int b = winners[i + 1];
-        if (a > b)
+        if (a > b) 
             std::swap(a, b);
-        // guardar la relación
-        pairs.push_back(std::make_pair(a, b));
-        // solo el winner pasa a la siguiente ronda
+        pairsNivel.push_back(std::make_pair(a, b));
         newWinners.push_back(b);
     }
 
     if (winners.size() % 2 != 0)
         newWinners.push_back(winners.back());
 
-    winners = newWinners;
+    //recursión
+    if (newWinners.size() > 1)
+        sortingvector(newWinners);
 
-    if (winners.size() == 1)
+    //INSERTAR LOS PEND (al volver)
+    std::vector<int> chain = newWinners;
+    std::vector<size_t> insertOrder = buildJacobOrder(pairsNivel.size());
+
+    //aquí va Jacobsthal + insert
+    // for (/* orden Jacob */)
+    size_t t = insertOrder.size();
+    std::cout << "esto es el inserordersize: " << t << std::endl;
+    for (size_t i = 0; i != t; ++i)
     {
-        // cadena principal inicial
-        std::vector<int> chain;
-        chain.push_back(winners[0]);
+        size_t idx = insertOrder[i];
+        int loser  = pairsNivel[idx].first;
+        int winner = pairsNivel[idx].second;
 
-        // insertar losers (luego aquí irá Jacobsthal)
-        // for (i : jacobOrder)
-        for (size_t i = 0; i < pairs.size(); ++i)
-        {
-            int loser  = pairs[i].first;
-            int winner = pairs[i].second;
-
-            // el loser solo puede ir antes de su winner
-            std::vector<int>::iterator limit =
-            std::find(chain.begin(), chain.end(), winner);
-
-            std::vector<int>::iterator pos =
-            std::lower_bound(chain.begin(), limit, loser);
-            chain.insert(pos, loser);
-        }
-
-        winners = chain; // resultado final
-        return;
+        // auto limit = std::find(chain.begin(), chain.end(), winner);
+        // auto pos   = std::lower_bound(chain.begin(), limit, loser);
+        // chain.insert(pos, loser);
+        std::vector<int>::iterator limit = std::find(chain.begin(), chain.end(), winner);
+        std::vector<int>::iterator pos = std::lower_bound(chain.begin(), limit, loser);
+        chain.insert(pos, loser);
     }
-    sortingvector(pairs, winners);
+    winners = chain;
 }
 
-// void PmergeMe::sortvector()
-// {
-//     std::vector< std::pair<int, int> > pairs;
-//     std::vector<int> winners;
-//     std::vector<int> losers;
-//     _withoutpair = -1;
-//     for (size_t i = 0; i + 1 < _vector.size(); i += 2)
-//     {
-//         int a = _vector[i];
-//         int b = _vector[i + 1];
-//         if (a > b)
-//             std::swap(a, b);
-//         // pairs.push_back(std::make_pair(a, b));
-//         losers.push_back(a);
-//         winners.push_back(b);
-//     }
-//     if (_vector.size() % 2 != 0)
-//     {
-//         _withoutpair = _vector.back();
-//         winners.push_back(_withoutpair);
-//     }
-//     sortingvector(losers, winners);
-// }
 void PmergeMe::sortvector()
 {
-    
-    // J(0) = 0
-    // J(1) = 1
-    // J(n) = J(n−1) + 2·J(n−2)
-
-    // std::vector<size_t> jacob;
-    // size_t j1 = 1, j2 = 1;
-    // while (j1 < losers.size())
-    // {
-    //     jacob.push_back(j1);
-    //     size_t j3 = j1 + 2 * j2;
-    //     j2 = j1;
-    //     j1 = j3;
-    // }
-    // for (size_t idx : jacobOrder)
-    // {
-    // int value = pairs[idx].loser;
-    // int limit = pairs[idx].winner;
-
-    // // buscar SOLO hasta 'limit'
-    // std::vector<int>::iterator pos =
-    //     std::lower_bound(chain.begin(),
-    //                      std::find(chain.begin(), chain.end(), limit),
-    //                      value);
-
-    // chain.insert(pos, value);
-    // }
-
-    std::vector< std::pair<int,int> > pairs;
-    std::vector<int> winners;
-
-    for (size_t i = 0; i + 1 < _vector.size(); i += 2)
-    {
-        int a = _vector[i];
-        int b = _vector[i + 1];
-        if (a > b)
-            std::swap(a, b);
-        pairs.push_back(std::make_pair(a, b));
-        winners.push_back(b);
-    }
-
-    if (_vector.size() % 2 != 0)
-        winners.push_back(_vector.back());
-    sortingvector(pairs, winners);
-    // winners ahora está completamente ordenado
-    for (size_t i = 0; i < winners.size(); ++i)
-    {
-        std::cout << "last winner " << i + 1 << ": (" << winners[i] << ")" << std::endl;
-    }
+    sortingvector(_vector);
 }
 
 
@@ -265,8 +181,6 @@ void PmergeMe::sortlist()
             std::swap(first, second);
         pairs.push_back(std::make_pair(first, second));
     }
-    // std::cout << pairs();
-        // printlist();
 }
 
 

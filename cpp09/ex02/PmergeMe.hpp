@@ -18,6 +18,7 @@ class PmergeMe
         std::vector<int> _vector;
         std::list<int> _list;
 		int _withoutpair;
+		size_t jacobstal;
 
 	public:
 		PmergeMe(char **av);
@@ -26,11 +27,10 @@ class PmergeMe
 		~PmergeMe();
 		void sortlist();
 		void sortvector();
-		void printlist();
-		void printvector();
+		void printbeforelist();
+		void afterlist();
+		// void printvector();
 		void printvectorpair();
-		template <typename T>
-		std::vector<T> mergeInsertion(std::vector<T> toinsert);
 };
 template <typename T>
 	struct pair
