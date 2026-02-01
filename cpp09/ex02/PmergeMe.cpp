@@ -95,7 +95,7 @@ std::vector<size_t> buildJacobOrder(std::size_t pairsize)
 {
     std::vector<size_t> jacobstals;
     jacobstals.push_back(1);
-    jacobstals.push_back(1);
+    jacobstals.push_back(3);
     while (1)
     {
         size_t next = jacobstals[jacobstals.size()-1] + 2 * jacobstals[jacobstals.size()-2];
@@ -106,6 +106,32 @@ std::vector<size_t> buildJacobOrder(std::size_t pairsize)
     return (jacobstals);
 }
 
+std::vector<size_t> buildInsertionOrder(size_t pairCount)
+{
+    std::vector<size_t> order;
+
+    if (pairCount <= 1)
+        return order;
+
+    std::vector<size_t> jacob = buildJacobOrder(pairCount);
+
+    size_t prev = 1;
+
+    for (size_t k = 0; k < jacob.size(); ++k)
+    {
+        size_t j = jacob[k];
+
+        for (size_t i = j; i > prev; --i)
+            order.push_back(i - 1); // 🔴 ya 0-based
+
+        prev = j;
+    }
+
+    for (size_t i = pairCount; i > prev; --i)
+        order.push_back(i - 1);     // 🔴 ya 0-based
+
+    return order;
+}
 
 void sortingvector(std::vector<int>& winners)
 {
@@ -121,37 +147,53 @@ void sortingvector(std::vector<int>& winners)
         if (a > b) 
             std::swap(a, b);
         pairsNivel.push_back(std::make_pair(a, b));
+        std::cout << "loser " << a << std::endl;
         newWinners.push_back(b);
     }
 
-    if (winners.size() % 2 != 0)
-        newWinners.push_back(winners.back());
+    // if (winners.size() % 2 != 0)
+    //     newWinners.push_back(winners.back());
 
-    //recursión
+    bool hasOdd = (winners.size() % 2 != 0);
+    int oddValue = 0;
+
+    if (hasOdd)
+        oddValue = winners.back();
+        
     if (newWinners.size() > 1)
         sortingvector(newWinners);
 
     //INSERTAR LOS PEND (al volver)
     std::vector<int> chain = newWinners;
-    std::vector<size_t> insertOrder = buildJacobOrder(pairsNivel.size());
+    chain.insert(chain.begin(), pairsNivel[0].first);
+    std::vector<size_t> insertOrder = buildInsertionOrder(pairsNivel.size() - 1);
 
-    //aquí va Jacobsthal + insert
-    // for (/* orden Jacob */)
-    size_t t = insertOrder.size();
-    std::cout << "esto es el inserordersize: " << t << std::endl;
-    for (size_t i = 0; i != t; ++i)
+    for (size_t i = 0; i < insertOrder.size(); ++i)
     {
-        size_t idx = insertOrder[i];
+        size_t idx = insertOrder[i] + 1;
+        
         int loser  = pairsNivel[idx].first;
         int winner = pairsNivel[idx].second;
+        std::cout << "loserjacob" << loser << std::endl;
 
-        // auto limit = std::find(chain.begin(), chain.end(), winner);
-        // auto pos   = std::lower_bound(chain.begin(), limit, loser);
-        // chain.insert(pos, loser);
-        std::vector<int>::iterator limit = std::find(chain.begin(), chain.end(), winner);
-        std::vector<int>::iterator pos = std::lower_bound(chain.begin(), limit, loser);
+        std::vector<int>::iterator limit =
+            std::find(chain.begin(), chain.end(), winner);
+
+        std::vector<int>::iterator pos =
+            std::lower_bound(chain.begin(), limit, loser);
+
         chain.insert(pos, loser);
     }
+
+    if (hasOdd)
+    {
+        std::cout << oddValue << std::endl;
+                std::cout << "oddValue" << oddValue << std::endl;
+        std::vector<int>::iterator pos =
+            std::lower_bound(chain.begin(), chain.end(), oddValue);
+        chain.insert(pos, oddValue);
+    }
+
     winners = chain;
 }
 
